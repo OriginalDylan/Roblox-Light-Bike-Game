@@ -1,0 +1,95 @@
+I HAVE ROBLOX STUDIO MCP SETUP FOR OPENCODE. I ALSO HAVE ROJO INSTALLED. READ ALL THIS INFO AND CONTEXT BEFORE STARTING:
+
+Create a highly detailed plan with instructions for the first steps of creating a Roblox game which will be programmed by AI. The goal is to have a 'Lightbike' 'Tron' game in Roblox with low latency. It should also look cool and be fun. The user will be using OpenCode to make this. Spend a short section on what the user needs to do (if anything) to prepare for this
+
+The Verdict: How Should You Use Them?
+Because you are building a fast-paced Lightbike game where math and precision code matter most, you don't actually have to choose just one—they complement each other perfectly.
+
+Use Rojo for your Core Coding: Let OpenCode use Rojo to write your clean, modular LightbikeController and LightbikeServer scripts. This keeps your fast-turn logic and raycasting math safe, organized, and backed up via Git.
+
+Use MCP for Debugging and Visuals: Once the scripts are in place, use Roblox Studio MCP to let OpenCode inspect your live game, tweak the Bloom settings in your Lighting to make the trails glow nicely, and read the console output if something breaks during a playtest.
+
+Building a low-latency "Tron" style Lightbike game in Roblox is an incredibly fun project, but it requires a solid technical foundation. Because Lightbikes move exceptionally fast, relying on default Roblox physics and .Touched events will result in players clipping through walls and experiencing delayed, laggy turns.
+
+Since you are using OpenCode (a terminal-native AI coding agent), you have a massive advantage: you can direct the AI to handle the heavy lifting of the code while you focus on game design. As an AI myself, I can't physically open your editor and type the code, but I can act as your Lead Developer and give you the exact roadmap and prompts you need to feed OpenCode to get this built right.
+
+Here is your highly detailed plan for the first steps.
+
+Phase 1: The Preparation (Pre-requisites)
+OpenCode is a terminal-based agent that reads and writes local files. Because Roblox Studio isn't a traditional text editor, you need to set up a bridge so OpenCode can interact with your Roblox project.
+
+Install OpenCode: If you haven't already, install OpenCode via your terminal (e.g., using curl -fsSL https://opencode.ai/install | bash for Mac/Linux or downloading the Windows binary).
+
+Connect an AI Model: Open your terminal, type opencode, and type /connect. Select a fast, high-reasoning model (like Gemini 1.5 Pro or DeepSeek) using your API key.
+
+Set Up Rojo (Crucial Step): OpenCode needs local .lua or .luau files to edit. You must install Rojo, a tool that syncs local files on your computer directly into Roblox Studio.
+
+Create a new folder on your PC (e.g., TronGame).
+
+Initialize a Rojo project in that folder.
+
+Open this folder in your terminal so OpenCode can read the file structure.
+
+Alternatively, use Roblox Studio MCP: If you want OpenCode to manipulate the Roblox workspace directly (creating parts, setting properties), install the robloxstudio-mcp plugin, enable HTTP requests in Studio, and connect it to OpenCode. (If you are new to this, the Rojo route is generally easier for pure scripting).
+
+Phase 2: The Architecture Plan (The "Low Latency" Secret)
+Before you have OpenCode write a single line of code, you need to understand the architecture you are going to enforce. If you let an AI guess how to make a Roblox game, it will often write laggy, server-heavy code. You must enforce these rules:
+
+Client-Side Prediction (Zero Lag): The player's device (LocalScript) must handle the bike's movement and turning instantly. Do not wait for the server to give permission to turn.
+
+Server Verification: The client tells the server "I turned at this exact position." The server verifies it and replicates that turn to other players.
+
+Raycast Hitboxes (No .Touched): At high speeds, Roblox physics engines fail. Instead of relying on parts touching, you will draw an invisible "Raycast" line from the bike's position in the previous frame to its current frame. If the line hits a trail, the player dies.
+
+Visuals over Physics: The trails shouldn't be physical blocks the server has to calculate physics for. They should be Anchored, non-collideable Parts with a Neon material, and the collision is purely handled by the Raycasting math.
+
+Phase 3: Your First Steps in OpenCode
+OpenCode features two main modes: Plan Mode and Build Mode (switchable via the Tab key). You will start in Plan Mode to lay the groundwork, then switch to Build Mode to write the code.
+
+Step 1: Establishing the Baseline
+In your OpenCode terminal, start a new session and switch to Plan Mode. Paste this prompt to set the AI's context:
+
+Prompt for OpenCode:
+"I am building a multiplayer Tron Lightbike game in Roblox. I need to set up the core client-server architecture. The highest priority is low latency and fast, responsive 90-degree turns. We will use Client-Side Prediction for local movement, RemoteEvents to broadcast turn locations to the server, and continuous Raycasting on the server for collision detection instead of .Touched events. Give me a brief outline of the folder structure we need in our Rojo project (StarterPlayerScripts, ServerScriptService, ReplicatedStorage) to achieve this."
+
+Step 2: The Local Movement Controller
+Once OpenCode understands the plan, switch to Build Mode (Tab). We will start by creating the player's local experience.
+
+Prompt for OpenCode:
+"Create a LocalScript inside StarterPlayerScripts called LightbikeController.
+
+It should take control of the player's character and replace it with a basic fast-moving Part (the bike).
+
+Bind the 'A' and 'D' keys to turn the bike exactly 90 degrees left or right instantly.
+
+Use RunService.RenderStepped to move the bike forward at a constant, high velocity.
+
+Whenever a turn is executed, fire a RemoteEvent located in ReplicatedStorage called 'TurnEvent' with the exact Vector3 position of the turn and the new directional Vector3.
+Ensure the code is heavily commented."
+
+Step 3: The Server Authority & Trail Generation
+Now, you need the server to listen to the clients, draw the visual trails, and check for deaths.
+
+Prompt for OpenCode:
+"Now, write a Server script in ServerScriptService called LightbikeServer.
+
+Listen for the 'TurnEvent' from clients.
+
+When a client turns, verify the distance is plausible to prevent exploiting.
+
+Generate a neon-colored Part (the trail) that dynamically stretches from the player's last turn position to their current position.
+
+Use RunService.Heartbeat to constantly draw a Raycast from the front of every active bike. If the Raycast hits a trail Part or a wall, trigger a death function that destroys the player's bike and clears their trails."
+
+Phase 4: Making it "Look Cool & Fun"
+Once the core movement and collision logic is functioning (which you will test by hitting Play in Roblox Studio), you will direct OpenCode to add the "juice" that makes it feel like Tron.
+
+In OpenCode, you can iteratively ask for these visual upgrades:
+
+Dynamic Camera: "Update the LightbikeController to lock the camera slightly above and behind the bike. As the bike moves, dynamically increase the Field of View (FOV) slightly to give a profound sense of speed."
+
+Lighting Aesthetics: "Write a script that configures the game's Lighting service. Set the Ambient to very dark, disable global shadows, and add a heavy BloomEffect so the Neon trail materials glow brightly against the dark grid."
+
+Trail Tweaks: "Modify the trail generation so that trails slowly fade to transparency and delete themselves after 10 seconds to prevent memory leaks and keep the arena clean."
+
+A Final Tip for Working with OpenCode: Always tackle one system at a time. If you tell OpenCode, "Make a whole Tron game," it will get overwhelmed and write messy code. By guiding it through the Controller, then the Server, then the Visuals—just like the steps above—you'll get a polished, professional-grade result.
