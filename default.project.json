@@ -4,6 +4,15 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
+      "TurnEvent": {
+        "$className": "RemoteEvent"
+      },
+      "StateUpdate": {
+        "$className": "UnreliableRemoteEvent"
+      },
+      "ReplicateTurn": {
+        "$className": "RemoteEvent"
+      },
       "Shared": {
         "$path": "src/shared"
       }
