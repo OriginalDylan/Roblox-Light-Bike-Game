@@ -19,8 +19,6 @@ print("[Client] GameState helpers loaded: segmentsIntersect, pointHitsSegment, i
 
 -- Initialize modules (stubs for now - they just print in Phase A)
 LightbikeController.init()
-LocalTrailRenderer.init()
 EnemyInterpolation.init()
-BikeVisuals.init()
 
 print("[Client] All client modules initialized successfully.")

@@ -20,9 +20,9 @@ print("[Server] Constants loaded: BIKE_SPEED =", Constants.BIKE_SPEED, "| TICK_R
 print("[Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena")
 
 -- Initialize modules (stubs for now - they just print in Phase A)
-LightbikeServer.init()
-GameStateManager.init()
 TrailManager.init()
+GameStateManager.init()
+LightbikeServer.init()
 CollisionService.init()
 MatchManager.init()
 AIBot.init()
