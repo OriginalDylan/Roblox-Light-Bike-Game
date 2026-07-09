@@ -1,0 +1,68 @@
+Phase 1: Axis-Aligned State Management (The Foundation)
+Since movement is locked to 90 degrees, your trails are no longer complex polygons; they are simple, straight lines on a 2D plane (assuming the Y-axis is constant). May want to investigate less than 90 degree turns. More interested in investigating different Z heights and ramps, but this is later on.
+
+The Data Structure: In src/shared/GameState.lua, define the arena and players. A player's trail history should be an array of coordinate pairs: {{StartX, StartZ, EndX, EndZ}, ...}.
+
+Velocity Vectors: Directions can only be one of four fixed vectors: (1, 0, 0), (-1, 0, 0), (0, 0, 1), or (0, 0, -1).
+
+The "Turn" Event: A trail segment is only finalized and added to the array when a player turns. Until they turn, the "active" segment is just their last turn position to their current position.
+
+Phase 2: Input Queuing & Client Prediction
+Human reaction times and network ping will ruin a 90-degree game if not handled perfectly. You need an "Input Buffer" (often used in games like Pac-Man).
+
+The Input Buffer: If a player is moving North and presses East, don't wait for the server. Instantly change their local velocity vector to East. Record the exact Vector3 position where this turn occurred and the os.clock() timestamp.
+
+Grid Snapping (Optional but Recommended): To keep trails perfectly aligned, you can force turns to snap to a hidden grid (e.g., every 2 studs). If the player presses turn slightly early, the client queues the turn and executes it the millisecond the bike crosses the next grid intersection.
+
+Rendering the Bike: Use RunService.RenderStepped to move a purely visual Model (your bike). Its position is simply LastTurnPosition + (CurrentDirection * Speed * TimeSinceTurn).
+
+Phase 3: Authoritative Server Tick & Validation
+The server does not run physics. It acts as a fast, strict referee validating the math.
+
+Fixed Tick Rate: Use RunService.Heartbeat on the server to step the game state forward at a fixed interval (e.g., 20 or 30 times a second).
+
+Ping Compensation: When the server receives a turn command from a client, it checks the timestamp. The server calculates backward to verify if the player's claimed turn position is mathematically valid based on their previous speed and direction. If valid, the server accepts it.
+
+Broadcasting: Every tick, the server packages the entire game state (all active turn points and current directions) and fires it to all clients via a single UnreliableRemoteEvent (which is faster and better for real-time updates than standard RemoteEvents).
+
+Phase 4: Flawless Client Interpolation
+Other players must look perfectly smooth, even if the server updates only 20 times a second.
+
+The Snapshot Buffer: When the client receives the server state, save it in a buffer. You will always render enemy bikes slightly in the past (roughly the duration of your ping + one server tick, usually 50-100ms).
+
+Linear Interpolation (Lerp): To draw an enemy, look at their position in Snapshot A and Snapshot B. Use Vector3:Lerp() to smoothly glide their visual model between those two points based on the current render frame.
+
+Dynamic Visual Trails: Do not use physical parts for the walls if possible. On the client, generate a single anchored Part for every finalized line segment in the state data. Size it dynamically based on the distance between the start and end coordinates.
+
+Phase 5: Mathematical Hit Detection (Axis-Aligned)
+Because your trails are perfectly straight lines on the X or Z axis, checking for a crash is incredibly cheap.
+
+Intersection Logic: You do not need raycasts. On every frame, check the player's current active line segment against all other saved line segments.
+
+The Math: If a trail is on the X-axis (horizontal), and your bike is moving on the Z-axis (vertical), a collision happens if your bike's Z coordinate crosses the trail's Z coordinate, and your bike's X coordinate is between the trail's StartX and EndX.
+
+Head-to-Head Resolution: If two players crash into each other head-on, the server checks the exact timestamps. Whoever technically entered the coordinate space first survives, or you trigger a mutual destruction tie.
+
+Phase 6: AI Bots (Flood-Fill & Survival)
+AI in a 90-degree grid environment can be highly intelligent using pathfinding algorithms rather than standard physics.
+
+Grid Conversion: The AI views the arena as a 2D array (a grid of 1s and 0s, where 1 is a trail wall).
+
+Flood-Fill Algorithm: Every few ticks, the AI runs a quick flood-fill check on its immediate left, right, and forward paths. It calculates how many "open" grid spaces exist in each direction.
+
+Decision Making: The AI will always choose the direction that yields the highest number of open spaces (the largest "bucket" of free space), ensuring it never traps itself in a small box.
+
+Phase 7: Graphics, VFX, and Sourcing 3D Models
+To make the game look and sound like a high-budget Tron experience:
+
+Sourcing the 3D Model:
+
+Option A (The Best Performance): Make it in Blender. Download Blender (it's free). Watch a 10-minute tutorial on basic modeling. A light bike is essentially a stretched cube with two cylinders for wheels. Export it as an .fbx file, import it into Studio using the Asset Manager, and use a MeshPart.
+
+Option B (The Quickest): The Creator Store. Open the Toolbox in Studio. Search for "Cyber Bike" or "Sci-Fi Motorcycle." Filter by "Meshes" rather than "Models" to ensure you get a single, unscripted 3D object. Always check the geometry to ensure it isn't overly complex (too many polygons).
+
+Option C (The Classic Roblox Way): Primitive Parts. Build a stylized, blocky bike entirely out of Roblox wedges, blocks, and cylinders. Weld them together and put them in a Model.
+
+Visual Polish: Apply the Neon material to the wheels and the trail walls. Add a BloomEffect in Lighting to make the neon glow heavily against the dark baseplate.
+
+Client-Side Explosions: When a player dies, destroy their visual model locally and emit a burst of neon ParticleEmitters

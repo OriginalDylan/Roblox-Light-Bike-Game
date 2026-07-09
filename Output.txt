@@ -1,0 +1,8 @@
+  21:09:29.278  [Server] Bootstrapping Tron Lightbike server modules...  -  Server - Server:18
+  21:09:29.278  [Server] Constants loaded: BIKE_SPEED = 60 | TICK_RATE = 30  -  Server - Server:19
+  21:09:29.278  [Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena  -  Server - Server:20
+  21:09:29.278  [Server] All server modules initialized successfully.  -  Server - Server:30
+  21:09:29.614  Attempted to call require with invalid argument(s).  -  Client - Client:14
+  21:09:29.614  Stack Begin  -  Studio
+  21:09:29.614  Script 'Players.HotwingsSpicy.PlayerScripts.Client', Line 14  -  Studio - Client:14
+  21:09:29.614  Stack End  -  Studio
