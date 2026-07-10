@@ -16,10 +16,12 @@ local Workspace = game:GetService("Workspace")
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameState = require(ReplicatedStorage.Shared.GameState)
 local LocalTrailRenderer = require(script.Parent.LocalTrailRenderer)
+
 
 local LightbikeController = {}
 
@@ -31,6 +33,9 @@ local alive: boolean = false
 local inputBuffer: { Vector3 } = {}
 local turnCooldown: number = 0
 local cameraLerpSpeed: number = 8
+local inputConnection: RBXScriptConnection? = nil
+local renderConnection: RBXScriptConnection? = nil
+local playerColor: Color3 = Constants.COLORS[1]
 
 function LightbikeController.init()
     local player = Players.LocalPlayer
@@ -43,6 +48,12 @@ function LightbikeController.init()
         spawnBike(char)
     end)
 
+    DeathEvent.OnClientEvent:Connect(function()
+        LightbikeController.destroy()
+    end)
+
+    playerColor = Constants.COLORS[(player.UserId - 1) % #Constants.COLORS + 1]
+
     if player.Character then
         spawnBike(player.Character)
     end
@@ -53,13 +64,21 @@ function spawnBike(char: Model)
         bike:Destroy()
         bike = nil
     end
+    if inputConnection then
+        inputConnection:Disconnect()
+        inputConnection = nil
+    end
+    if renderConnection then
+        renderConnection:Disconnect()
+        renderConnection = nil
+    end
     alive = true
     direction = Constants.DIRECTIONS.NORTH
     position = Vector3.new(0, Constants.SPAWN_Y, 0)
     lastTurnPosition = position
     inputBuffer = {}
     turnCooldown = 0
-    LocalTrailRenderer.clear()
+
 
     char:SetAttribute("TronBike", true)
     for _, child in char:GetChildren() do
@@ -74,10 +93,14 @@ function spawnBike(char: Model)
     bike.Anchored = true
     bike.CanCollide = false
     bike.Material = Enum.Material.Neon
-    bike.Color = Constants.COLORS[1]
+    bike.Color = playerColor
     bike.Size = Constants.BIKE_SIZE
     bike.CFrame = CFrame.lookAt(position, position + direction)
     bike.Parent = Workspace
+
+    LocalTrailRenderer.clear()
+    LocalTrailRenderer.setColor(playerColor)
+    LocalTrailRenderer.init(position, direction)
 
     local camera = Workspace.CurrentCamera
     camera.CameraType = Enum.CameraType.Scriptable
@@ -85,7 +108,7 @@ function spawnBike(char: Model)
     local camOffset = bikeCF:VectorToWorldSpace(Vector3.new(0, 8, 16))
     camera.CFrame = CFrame.lookAt(position + camOffset, position + direction * 10 + Vector3.new(0, 2, 0))
 
-    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    inputConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
         if gameProcessed or not alive then return end
         if input.KeyCode == Enum.KeyCode.A then
             queueTurn(1)
@@ -94,10 +117,10 @@ function spawnBike(char: Model)
         end
     end)
 
-    RunService.RenderStepped:Connect(function(dt)
+    renderConnection = RunService.RenderStepped:Connect(function(dt)
         if not alive or not bike then return end
         tickBike(dt)
-        LocalTrailRenderer.update(position, lastTurnPosition, direction, Constants.COLORS[1])
+
         updateCamera(dt)
     end)
 end
@@ -138,6 +161,7 @@ function tickBike(dt: number)
     end
 
     bike.CFrame = CFrame.lookAt(position, position + direction)
+    LocalTrailRenderer.update(position, lastTurnPosition)
 end
 
 function positionSnapping(): boolean
@@ -152,6 +176,7 @@ function positionSnapping(): boolean
 end
 
 function turnComplete(newDir: Vector3)
+    LocalTrailRenderer.finalizeSegment(lastTurnPosition, position)
     direction = newDir
     lastTurnPosition = position
     turnCooldown = 0.05
@@ -175,6 +200,7 @@ function LightbikeController.destroy()
         bike:Destroy()
         bike = nil
     end
+    LocalTrailRenderer.clear()
     alive = false
 end
 

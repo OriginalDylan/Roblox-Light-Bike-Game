@@ -1,14 +1,14 @@
---[[
-    MatchManager.luau (stub)
-    ========================
-    Phase D: Round flow management.
-    Countdown, spawn bikes, track survivors, kill bikes, restart rounds.
-]]
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
 
 local MatchManager = {}
 
 function MatchManager.init()
-    -- Phase D implementation goes here
+    print("[MatchManager] Initialized")
+end
+
+function MatchManager.killBike(player)
+    DeathEvent:FireClient(player)
 end
 
 return MatchManager

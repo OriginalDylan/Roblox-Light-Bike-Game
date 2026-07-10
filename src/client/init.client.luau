@@ -9,7 +9,7 @@ local Constants = require(game.ReplicatedStorage.Shared.Constants)
 local GameState = require(game.ReplicatedStorage.Shared.GameState)
 
 local LightbikeController = require(script.LightbikeController)
-local LocalTrailRenderer = require(script.LocalTrailRenderer)
+
 local EnemyInterpolation = require(script.EnemyInterpolation)
 local BikeVisuals = require(script.BikeVisuals)
 

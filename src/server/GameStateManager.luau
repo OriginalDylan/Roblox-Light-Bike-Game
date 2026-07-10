@@ -6,7 +6,8 @@
     - Maintains per-player state (position, direction, trail history, bike Part)
     - Creates/destroys server-side bike Parts
     - Integrates with TrailManager for visual trail parts
-    - Packages and broadcasts full state snapshots via StateUpdate (UnreliableRemoteEvent)
+    - Packages and broadcasts minimal state snapshots via StateUpdate (UnreliableRemoteEvent)
+    - Trail segments broadcast separately via ReplicateTurn (reliable, on-turn only)
 ]]
 
 local Players = game:GetService("Players")
@@ -14,10 +15,13 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
+local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
 local TrailManager = require(script.Parent.TrailManager)
+local CollisionService = require(script.Parent.CollisionService)
+local MatchManager = require(script.Parent.MatchManager)
 
 local GameStateManager = {}
 
@@ -105,17 +109,25 @@ function serverTick(dt)
             TrailManager.updateActiveSegment(state.player, state.position, state.lastTurnPosition)
         end
     end
+
+    local dead = CollisionService.checkAll(playerStates)
+    for player, _ in dead do
+        local state = playerStates[player]
+        if not state or not state.alive then continue end
+        state.alive = false
+        if state.bikePart then
+            state.bikePart:Destroy()
+            state.bikePart = nil
+        end
+        TrailManager.onDeath(player, state.position, state.lastTurnPosition)
+        MatchManager.killBike(player)
+    end
     broadcastState()
 end
 
 function broadcastState()
     local snapshot = { t = tickNumber, p = {} }
     for _, state in playerStates do
-        local trail = {}
-        local startIdx = math.max(1, #state.trailHistory - 19)
-        for i = startIdx, #state.trailHistory do
-            trail[i - startIdx + 1] = state.trailHistory[i]
-        end
         local ps = {
             u = state.player.UserId,
             x = state.position.X,
@@ -124,7 +136,8 @@ function broadcastState()
             dz = state.direction.Z,
             a = state.alive,
             c = state.colorIndex,
-            h = trail,
+            lx = state.lastTurnPosition.X,
+            lz = state.lastTurnPosition.Z,
         }
         snapshot.p[#snapshot.p + 1] = ps
     end
@@ -140,9 +153,11 @@ function GameStateManager.applyTurn(player, turnPos, newDir)
         turnPos.X, turnPos.Z
     )
     table.insert(state.trailHistory, seg)
+    ReplicateTurn:FireAllClients(player.UserId, seg)
 
     TrailManager.onTurn(player, turnPos, state.lastTurnPosition)
     state.lastTurnPosition = turnPos
+    state.position = turnPos
     state.direction = newDir
     state.lastTurnTime = os.clock()
 end

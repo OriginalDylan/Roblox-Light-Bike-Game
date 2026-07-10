@@ -10,6 +10,9 @@
       "StateUpdate": {
         "$className": "UnreliableRemoteEvent"
       },
+      "DeathEvent": {
+        "$className": "RemoteEvent"
+      },
       "ReplicateTurn": {
         "$className": "RemoteEvent"
       },

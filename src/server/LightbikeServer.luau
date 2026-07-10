@@ -5,13 +5,11 @@
     - Listens for TurnEvent from clients
     - Ping compensation: validates turn distance is within speed * elapsed * 1.2
     - Rejects invalid turns (cheating, lag exploits)
-    - Calls GameStateManager.applyTurn() for valid turns
-    - Broadcasts via ReplicateTurn for immediate feedback
+    - Calls GameStateManager.applyTurn() for valid turns (which also fires ReplicateTurn)
 ]]
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
-local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameStateManager = require(script.Parent.GameStateManager)
@@ -30,7 +28,7 @@ function validateAndApplyTurn(player, turnPos, newDir, timestamp)
     local state = states[player]
     if not state or not state.alive then return end
 
-    -- Validate newDir is perpendicular to current direction (dot product ≈ 0)
+    -- Validate newDir is perpendicular to current direction (dot product approximately 0)
     local dot = state.direction.X * newDir.X + state.direction.Z * newDir.Z
     if math.abs(dot) > 0.1 then
         return
@@ -51,8 +49,6 @@ function validateAndApplyTurn(player, turnPos, newDir, timestamp)
     end
 
     GameStateManager.applyTurn(player, turnPos, newDir)
-
-    ReplicateTurn:FireAllClients(player, turnPos, newDir)
 end
 
 return LightbikeServer

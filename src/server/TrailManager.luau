@@ -1,20 +1,11 @@
---[[
-    TrailManager.luau
-    =================
-    Server-side decorative trail part management.
-    - Creates Anchored+Neon trail parts for each finalized segment
-    - Stretches the active (growing) segment each tick
-    - Fades and destroys segments after TRAIL_FADE_TIME
-]]
-
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
 local Constants = require(ReplicatedStorage.Shared.Constants)
-local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
 
 local TrailManager = {}
 
-local trailData = {} -- player -> {segments: {Part}, activePart: Part, lastLength: number}
+local trailData = {}
 
 function TrailManager.init()
     print("[TrailManager] Initialized")
@@ -42,18 +33,7 @@ function TrailManager.removePlayer(player)
     end
 end
 
-function TrailManager.onTurn(player, turnPos, lastTurnPos)
-    local data = trailData[player]
-    if not data then return end
-
-    -- Finalize the active segment: replace the growing part with a permanent one
-    if data.activePart then
-        data.activePart:Destroy()
-        data.activePart = nil
-    end
-
-    local startPos = lastTurnPos
-    local endPos = turnPos
+local function createSegmentPart(startPos, endPos, color)
     local mid = (startPos + endPos) / 2
     mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
     local dx = endPos.X - startPos.X
@@ -64,22 +44,56 @@ function TrailManager.onTurn(player, turnPos, lastTurnPos)
     seg.Anchored = true
     seg.CanCollide = false
     seg.Material = Enum.Material.Neon
-    seg.Color = data.color
+    seg.Color = color
     seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
     seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
     seg.Parent = Workspace
+    return seg
+end
 
-    table.insert(data.segments, seg)
-
-    task.delay(Constants.TRAIL_FADE_TIME, function()
+local function scheduleFade(seg, delay)
+    task.delay(delay, function()
         if seg and seg.Parent then
-            local tween = game:GetService("TweenService"):Create(seg, TweenInfo.new(1), { Transparency = 1 })
+            local tween = TweenService:Create(seg, TweenInfo.new(1), { Transparency = 1 })
             tween:Play()
             tween.Completed:Connect(function()
                 seg:Destroy()
             end)
         end
     end)
+end
+
+function TrailManager.onTurn(player, turnPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, turnPos, data.color)
+    table.insert(data.segments, seg)
+
+    scheduleFade(seg, Constants.TRAIL_FADE_TIME)
+end
+
+function TrailManager.onDeath(player, deathPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, deathPos, data.color)
+    table.insert(data.segments, seg)
+
+    for _, seg in data.segments do
+        scheduleFade(seg, 0)
+    end
+    data.segments = {}
 end
 
 function TrailManager.updateActiveSegment(player, currentPos, lastTurnPos)
