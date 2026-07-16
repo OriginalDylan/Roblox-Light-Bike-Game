@@ -91,7 +91,7 @@ function TrailManager.onDeath(player, deathPos, lastTurnPos)
     table.insert(data.segments, seg)
 
     for _, seg in data.segments do
-        scheduleFade(seg, 0)
+        seg:Destroy()
     end
     data.segments = {}
 end

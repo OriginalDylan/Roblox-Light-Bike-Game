@@ -332,10 +332,8 @@ function AIBot.init()
     TrailManager.addPlayer(fakePlayer, color)
 
     local PATH = {
-        { dir = Constants.DIRECTIONS.EAST,  dur = 3.0 },
-        { dir = Constants.DIRECTIONS.SOUTH, dur = 3.0 },
-        { dir = Constants.DIRECTIONS.WEST,  dur = 3.0 },
-        { dir = Constants.DIRECTIONS.NORTH, dur = 3.0 },
+        { dir = Constants.DIRECTIONS.EAST,  dur = 2.0 },
+        { dir = Constants.DIRECTIONS.SOUTH, dur = 2.0 },
     }
     local pathIdx = 1
     local pathTimer = 0
@@ -385,8 +383,6 @@ function CollisionService.init()
     print("[CollisionService] Initialized")
 end
 
-local EPSILON = 0.1
-
 function CollisionService.checkAll(playerStates)
     local dead = {}
     for player, state in pairs(playerStates) do
@@ -406,35 +402,21 @@ function CollisionService.checkAll(playerStates)
             end
         end
 
-        local dx = active.endX - active.startX
-        local dz = active.endZ - active.startZ
-        local segLen = math.max(math.abs(dx), math.abs(dz))
-        local checkActive
-        if segLen > EPSILON then
-            local ratio = EPSILON / segLen
-            checkActive = GameStateHelpers.makeSegment(
-                active.startX + dx * ratio,
-                active.startZ + dz * ratio,
-                active.endX,
-                active.endZ
-            )
-        end
-
         for otherPlayer, otherState in pairs(playerStates) do
             if otherPlayer == player then continue end
 
-            if checkActive then
-                for _, seg in pairs(otherState.trailHistory) do
-                    if GameStateHelpers.segmentsIntersect(checkActive, seg) then
-                        dead[player] = true
-                        break
-                    end
+            for _, seg in pairs(otherState.trailHistory) do
+                if GameStateHelpers.segmentsIntersect(active, seg) then
+                    dead[player] = true
+                    break
                 end
             end
 
             if otherState.alive then
                 local otherActive = GameStateHelpers.getActiveSegment(otherState.lastTurnPosition, otherState.position)
-                if GameStateHelpers.segmentsIntersect(active, otherActive) then
+                local sameAxis = (GameStateHelpers.isHorizontal(active) and GameStateHelpers.isHorizontal(otherActive) and active.startZ == otherActive.startZ)
+                    or (GameStateHelpers.isVertical(active) and GameStateHelpers.isVertical(otherActive) and active.startX == otherActive.startX)
+                if sameAxis and GameStateHelpers.segmentsIntersect(active, otherActive) then
                     dead[player] = true
                     dead[otherPlayer] = true
                 end
@@ -556,6 +538,7 @@ function serverTick(dt)
         local state = playerStates[player]
         if not state or not state.alive then continue end
         state.alive = false
+        state.trailHistory = {}
         if state.bikePart then
             state.bikePart:Destroy()
             state.bikePart = nil
@@ -781,7 +764,7 @@ function TrailManager.onDeath(player, deathPos, lastTurnPos)
     table.insert(data.segments, seg)
 
     for _, seg in data.segments do
-        scheduleFade(seg, 0)
+        seg:Destroy()
     end
     data.segments = {}
 end
@@ -883,7 +866,7 @@ return BikeVisuals
         <Item class="ModuleScript" referent="23">
           <Properties>
             <string name="Name">EnemyInterpolation</string>
-            <string name="Source"><![CDATA[local Players = game:GetService("Players")
+            <string name="Source">local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
@@ -980,8 +963,12 @@ function renderSnapshot(snapshot)
         local data = ensureEnemyData(ps.u, ps.c)
 
         if not ps.a then
-            data.bike.Transparency = 1
-            data.activeTrail.Transparency = 1
+            data.bike:Destroy()
+            data.activeTrail:Destroy()
+            for _, t in data.trails do
+                t:Destroy()
+            end
+            enemyData[ps.u] = nil
             continue
         end
 
@@ -1019,8 +1006,7 @@ function renderSnapshot(snapshot)
     end
 end
 
-return EnemyInterpolation
-]]></string>
+return EnemyInterpolation</string>
           </Properties>
         </Item>
         <Item class="ModuleScript" referent="24">

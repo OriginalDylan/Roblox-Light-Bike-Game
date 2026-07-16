@@ -95,8 +95,12 @@ function renderSnapshot(snapshot)
         local data = ensureEnemyData(ps.u, ps.c)
 
         if not ps.a then
-            data.bike.Transparency = 1
-            data.activeTrail.Transparency = 1
+            data.bike:Destroy()
+            data.activeTrail:Destroy()
+            for _, t in data.trails do
+                t:Destroy()
+            end
+            enemyData[ps.u] = nil
             continue
         end
 

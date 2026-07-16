@@ -103,6 +103,7 @@ function serverTick(dt)
         local state = playerStates[player]
         if not state or not state.alive then continue end
         state.alive = false
+        state.trailHistory = {}
         if state.bikePart then
             state.bikePart:Destroy()
             state.bikePart = nil

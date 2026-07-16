@@ -8,8 +8,6 @@ function CollisionService.init()
     print("[CollisionService] Initialized")
 end
 
-local EPSILON = 0.1
-
 function CollisionService.checkAll(playerStates)
     local dead = {}
     for player, state in pairs(playerStates) do
@@ -29,35 +27,21 @@ function CollisionService.checkAll(playerStates)
             end
         end
 
-        local dx = active.endX - active.startX
-        local dz = active.endZ - active.startZ
-        local segLen = math.max(math.abs(dx), math.abs(dz))
-        local checkActive
-        if segLen > EPSILON then
-            local ratio = EPSILON / segLen
-            checkActive = GameStateHelpers.makeSegment(
-                active.startX + dx * ratio,
-                active.startZ + dz * ratio,
-                active.endX,
-                active.endZ
-            )
-        end
-
         for otherPlayer, otherState in pairs(playerStates) do
             if otherPlayer == player then continue end
 
-            if checkActive then
-                for _, seg in pairs(otherState.trailHistory) do
-                    if GameStateHelpers.segmentsIntersect(checkActive, seg) then
-                        dead[player] = true
-                        break
-                    end
+            for _, seg in pairs(otherState.trailHistory) do
+                if GameStateHelpers.segmentsIntersect(active, seg) then
+                    dead[player] = true
+                    break
                 end
             end
 
             if otherState.alive then
                 local otherActive = GameStateHelpers.getActiveSegment(otherState.lastTurnPosition, otherState.position)
-                if GameStateHelpers.segmentsIntersect(active, otherActive) then
+                local sameAxis = (GameStateHelpers.isHorizontal(active) and GameStateHelpers.isHorizontal(otherActive) and active.startZ == otherActive.startZ)
+                    or (GameStateHelpers.isVertical(active) and GameStateHelpers.isVertical(otherActive) and active.startX == otherActive.startX)
+                if sameAxis and GameStateHelpers.segmentsIntersect(active, otherActive) then
                     dead[player] = true
                     dead[otherPlayer] = true
                 end

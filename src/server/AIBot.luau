@@ -47,10 +47,8 @@ function AIBot.init()
     TrailManager.addPlayer(fakePlayer, color)
 
     local PATH = {
-        { dir = Constants.DIRECTIONS.EAST,  dur = 3.0 },
-        { dir = Constants.DIRECTIONS.SOUTH, dur = 3.0 },
-        { dir = Constants.DIRECTIONS.WEST,  dur = 3.0 },
-        { dir = Constants.DIRECTIONS.NORTH, dur = 3.0 },
+        { dir = Constants.DIRECTIONS.EAST,  dur = 2.0 },
+        { dir = Constants.DIRECTIONS.SOUTH, dur = 2.0 },
     }
     local pathIdx = 1
     local pathTimer = 0
