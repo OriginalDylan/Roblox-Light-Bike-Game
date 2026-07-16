@@ -1,4 +1,4 @@
-﻿# Progress
+# Progress
 
 > Status of the Roblox Lightbike Tron Game project.
 
@@ -19,14 +19,16 @@
 
 ## Current State
 
-Phases A–D are fully implemented. Phases E–F are incomplete. Key features:
+Phases A–E (partial) are implemented. Key features:
 
 - **Client-side prediction** with input buffering and grid-snapped 90° turns
 - **Server authority** with fixed-rate tick (30 Hz), ping-compensated turn validation, and UnreliableRemoteEvent state broadcasting
 - **Decorative trails** — server-authoritative trail parts with client-side instant feedback
-- **Math-based collision** — axis-aligned line intersection (no raycasts or .Touched)
-- **Enemy interpolation** — basic snapshot rendering
-- **Respawn** — server revives via CharacterAdded
+- **Math-based collision** — axis-aligned line intersection (no raycasts or .Touched) with self-hit and other-player detection
+- **Arena bounds** — configurable size (default 4096), kills players who exit
+- **Enemy interpolation** — snapshot-based rendering of other players
+- **Character anchoring** — HumanoidRootPart is anchored/made transparent instead of using PrimaryPart = nil, preventing unintended fall deaths
+- **Material constants** — TRAIL_MATERIAL and BIKE_MATERIAL replace hardcoded Enum.Material.Neon
 
 ## Not Yet Implemented
 
@@ -44,29 +46,18 @@ Phases A–D are fully implemented. Phases E–F are incomplete. Key features:
 
 ---
 
-## ⚠️ Workflow Rule: Source Files Are Permanent, MCP Is Not
+## Workflow Rule: Source Files Are Permanent, MCP Is Not
 
-**Do NOT use MCP for changes you want to keep.** MCP modifications (execute_luau, setting Lighting properties, inserting parts) live only in the current Studio session and the .rbxlx file. When you run `rojo build`, they are permanently lost.
+**Do NOT use MCP for changes you want to keep.** MCP modifications live only in the current Studio session and the .rbxlx file. When you run rojo build, they are permanently lost.
 
 **Always make permanent changes in the Rojo project:**
 
 | What | Where |
 |------|-------|
-| Game logic | `src/client/*.luau`, `src/server/*.luau` |
-| Shared config | `src/shared/Constants.luau`, `src/shared/Types.luau` |
-| Lighting, Bloom, instances | `default.project.json` |
-| Visual effects code | `src/client/BikeVisuals.luau` |
-
-**Workflow to make changes stick:**
-1. Edit the source file
-2. Run `rojo build -o "Roblox Tron Game.rbxlx"` to rebuild
-3. Open in Studio and test
-4. Commit to git
-
-**MCP is for temporary use only:**
-- Inspecting console output (`get_console_output`)
-- Taking screenshots (`screen_capture`)
-- Debugging (never saved)
+| Game logic | src/client/*.luau, src/server/*.luau |
+| Shared config | src/shared/Constants.luau, src/shared/Types.luau |
+| Lighting, Bloom, instances | default.project.json |
+| Visual effects code | src/client/BikeVisuals.luau |
 
 ---
 
@@ -75,8 +66,16 @@ Phases A–D are fully implemented. Phases E–F are incomplete. Key features:
 | Constant | Value | Notes |
 |----------|-------|-------|
 | BIKE_SPEED | 60 | studs/sec |
+| BIKE_SIZE | (2, 1, 4) | bike part dimensions |
+| TURN_ANGLE | 90 | degrees |
 | GRID_SIZE | 2 | studs per grid cell |
-| ARENA_SIZE | 512 | half-extent = 256 |
+| ARENA_SIZE | 4096 | half-extent = 2048 |
 | TICK_RATE | 30 | server ticks per second |
+| TRAIL_HEIGHT | 3 | trail part height |
+| TRAIL_WIDTH | 0.5 | trail part width |
 | TRAIL_FADE_TIME | 10 | seconds before trail autodeletes |
+| TRAIL_MATERIAL | SmoothPlastic | trail part material |
+| BIKE_MATERIAL | SmoothPlastic | bike part material |
+| MAX_TURN_RATE | 8 | max turns/sec per player |
+| INTERP_DELAY | 0.1 | render-in-the-past for enemies |
 | SPAWN_Y | 1 | bike center Y |
