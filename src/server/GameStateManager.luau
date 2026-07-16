@@ -44,7 +44,7 @@ function GameStateManager.init()
 end
 
 function createPlayerState(player)
-    local color = Constants.COLORS[(player.UserId - 1) % #Constants.COLORS + 1]
+    local color = Constants.COLORS[3]
     local spawnPos = Vector3.new(0, Constants.SPAWN_Y, 0)
 
     local bike = Instance.new("Part")
@@ -67,7 +67,7 @@ function createPlayerState(player)
         trailHistory = {},
         alive = true,
         color = color,
-        colorIndex = (player.UserId - 1) % #Constants.COLORS + 1,
+        colorIndex = 3,
     }
     playerStates[player] = state
     TrailManager.addPlayer(player, color)

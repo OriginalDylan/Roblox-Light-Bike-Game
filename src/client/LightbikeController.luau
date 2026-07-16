@@ -52,7 +52,7 @@ function LightbikeController.init()
         LightbikeController.destroy()
     end)
 
-    playerColor = Constants.COLORS[(player.UserId - 1) % #Constants.COLORS + 1]
+    playerColor = Constants.COLORS[3]
 
     if player.Character then
         spawnBike(player.Character)

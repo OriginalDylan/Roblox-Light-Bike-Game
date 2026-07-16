@@ -1,8 +1,21 @@
-
-  20:32:04.300  [MatchManager] Initialized  -  Server - MatchManager:7
-  20:32:04.300  [Server] All server modules initialized successfully.  -  Server - Server:30
-  20:32:04.446  [PlatformLeaderboard] Fetcher request failed  -  Server
-  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardPush' and has been disabled (see go/lua-apps-remotes)  -  Studio
-  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabOpened' and has been disabled (see go/lua-apps-remotes)  -  Studio
-  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabClosed' and has been disabled (see go/lua-apps-remotes)  -  Studio
-  20:32:04.581  [GameStateManager] Player added: HotwingsSpicy  -  Server - GameStateManager:
+  21:15:17.689  [Server] Bootstrapping Tron Lightbike server modules...  -  Server - Server:18
+  21:15:17.689  [Server] Constants loaded: BIKE_SPEED = 60 | TICK_RATE = 30  -  Server - Server:19
+  21:15:17.690  [Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena  -  Server - Server:20
+  21:15:17.690  [TrailManager] Initialized  -  Server - TrailManager:11
+  21:15:17.690  [GameStateManager] Initialized  -  Server - GameStateManager:43
+  21:15:17.690  [LightbikeServer] Initialized  -  Server - LightbikeServer:23
+  21:15:17.690  [CollisionService] Initialized  -  Server - CollisionService:8
+  21:15:17.690  [MatchManager] Initialized  -  Server - MatchManager:7
+  21:15:17.691  [AIBot] Initialized - spawned at -200, 1, -200 speed 42  -  Server - AIBot:81
+  21:15:17.691  [Server] All server modules initialized successfully.  -  Server - Server:30
+  21:15:17.815  [PlatformLeaderboard] Fetcher request failed  -  Server
+  21:15:17.815  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardPush' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  21:15:17.816  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabOpened' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  21:15:17.816  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabClosed' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  21:15:17.958  [GameStateManager] Player added: HotwingsSpicy  -  Server - GameStateManager:74
+  21:15:18.104  [Client] Bootstrapping Tron Lightbike client modules...  -  Client - Client:16
+  21:15:18.105  [Client] Constants loaded: BIKE_SPEED = 60 | ARENA_SIZE = 4096  -  Client - Client:17
+  21:15:18.105  [Client] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena  -  Client - Client:18
+  21:15:18.105  [EnemyInterpolation] Initialized  -  Client - EnemyInterpolation:22
+  21:15:18.105  [Client] All client modules initialized successfully.  -  Client - Client:24
+  21:15:22.423  [Collision] HotwingsSpicy died: head-on with AI_Bot | this=(0,0)-(0,-272) other=(-200,-200)-(0.19978809356689453,-200)  -  Server - CollisionService:89
