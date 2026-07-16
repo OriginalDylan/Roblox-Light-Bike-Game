@@ -8,6 +8,8 @@ function CollisionService.init()
     print("[CollisionService] Initialized")
 end
 
+local EPSILON = 0.1
+
 function CollisionService.checkAll(playerStates)
     local dead = {}
     for player, state in pairs(playerStates) do
@@ -27,13 +29,29 @@ function CollisionService.checkAll(playerStates)
             end
         end
 
+        local dx = active.endX - active.startX
+        local dz = active.endZ - active.startZ
+        local segLen = math.max(math.abs(dx), math.abs(dz))
+        local checkActive
+        if segLen > EPSILON then
+            local ratio = EPSILON / segLen
+            checkActive = GameStateHelpers.makeSegment(
+                active.startX + dx * ratio,
+                active.startZ + dz * ratio,
+                active.endX,
+                active.endZ
+            )
+        end
+
         for otherPlayer, otherState in pairs(playerStates) do
             if otherPlayer == player then continue end
 
-            for _, seg in pairs(otherState.trailHistory) do
-                if GameStateHelpers.segmentsIntersect(active, seg) then
-                    dead[player] = true
-                    break
+            if checkActive then
+                for _, seg in pairs(otherState.trailHistory) do
+                    if GameStateHelpers.segmentsIntersect(checkActive, seg) then
+                        dead[player] = true
+                        break
+                    end
                 end
             end
 
