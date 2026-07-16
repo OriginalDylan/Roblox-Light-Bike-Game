@@ -8,7 +8,9 @@ function MatchManager.init()
 end
 
 function MatchManager.killBike(player)
-    DeathEvent:FireClient(player)
+    if typeof(player) == "Instance" then
+        DeathEvent:FireClient(player)
+    end
 end
 
 return MatchManager

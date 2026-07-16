@@ -13,6 +13,7 @@ return {
     BIKE_MATERIAL    = Enum.Material.SmoothPlastic,
     MAX_TURN_RATE    = 8,
     INTERP_DELAY     = 0.1,
+    AI_SPEED         = 42,
     COLORS = {
         Color3.fromRGB(0, 255, 255),
         Color3.fromRGB(255, 128, 0),

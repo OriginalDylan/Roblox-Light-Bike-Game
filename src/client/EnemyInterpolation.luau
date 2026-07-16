@@ -1,12 +1,3 @@
---[[
-    EnemyInterpolation.luau
-    =======================
-    Listens for StateUpdate (UnreliableRemoteEvent) from the server
-    and renders other players' bikes and trails.
-    Phase C: Basic direct positioning (no Lerp yet).
-    Phase E: Adds snapshot buffer and Lerp for smooth movement.
-]]
-
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -82,10 +73,10 @@ function onReplicateTurn(userId, segment)
     part.Color = data.bike.Color
     part.Parent = Workspace
 
-    local midX = (segment.sx + segment.ex) / 2
-    local midZ = (segment.sz + segment.ez) / 2
-    local dx = segment.ex - segment.sx
-    local dz = segment.ez - segment.sz
+    local midX = (segment.startX + segment.endX) / 2
+    local midZ = (segment.startZ + segment.endZ) / 2
+    local dx = segment.endX - segment.startX
+    local dz = segment.endZ - segment.startZ
     local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
     part.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
     part.CFrame = CFrame.lookAt(

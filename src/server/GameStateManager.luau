@@ -1,15 +1,3 @@
---[[
-    GameStateManager.luau
-    =====================
-    Server-side authoritative state management.
-    - Fixed-rate tick loop (Heartbeat at TICK_RATE)
-    - Maintains per-player state (position, direction, trail history, bike Part)
-    - Creates/destroys server-side bike Parts
-    - Integrates with TrailManager for visual trail parts
-    - Packages and broadcasts minimal state snapshots via StateUpdate (UnreliableRemoteEvent)
-    - Trail segments broadcast separately via ReplicateTurn (reliable, on-turn only)
-]]
-
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -101,7 +89,7 @@ end
 function serverTick(dt)
     tickNumber = tickNumber + 1
     for _, state in playerStates do
-        if state.alive then
+        if state.alive and not state.isAI then
             state.position = state.position + state.direction * Constants.BIKE_SPEED * dt
             if state.bikePart then
                 state.bikePart.CFrame = CFrame.lookAt(state.position, state.position + state.direction)
