@@ -8,34 +8,34 @@
 
 | Phase | Goal | Status |
 |-------|------|--------|
-| A | Foundation (shared state, types, RemoteEvents) | ✅ Complete |
-| B | Local Movement (input buffer + grid snapping) | ✅ Complete |
-| C | Server Authority (fixed tick + state broadcasting) | ✅ Complete |
-| D | Collision (axis-aligned math intersection) | ✅ Complete |
-| E | Interpolation + Visuals (snapshot buffer + Lerp) | ⚠️ Partial — basic enemy rendering works, BikeVisuals is a stub |
-| F | AI Bots (flood-fill pathfinding) | ❌ Not implemented — AIBot.luau is an empty stub |
+| A | Foundation (shared state, types, RemoteEvents) | Complete |
+| B | Local Movement (input buffer + grid snapping) | Complete |
+| C | Server Authority (fixed tick + state broadcasting) | Complete |
+| D | Collision (axis-aligned math intersection) | Complete |
+| E | Interpolation + Visuals (snapshot buffer + Lerp) | Partial - basic enemy rendering works, BikeVisuals is a stub |
+| F | AI Bots (flood-fill pathfinding) | Not implemented - AIBot.luau is an empty stub |
 
 ---
 
 ## Current State
 
-Phases A–E (partial) are implemented. Key features:
+Phases A-E (partial) are implemented. Key features:
 
-- **Client-side prediction** with input buffering and grid-snapped 90° turns
-- **Server authority** with fixed-rate tick (30 Hz), ping-compensated turn validation, and UnreliableRemoteEvent state broadcasting
-- **Decorative trails** — server-authoritative trail parts with client-side instant feedback
-- **Math-based collision** — axis-aligned line intersection (no raycasts or .Touched) with self-hit and other-player detection
-- **Arena bounds** — configurable size (default 4096), kills players who exit
-- **Enemy interpolation** — snapshot-based rendering of other players
-- **Character anchoring** — HumanoidRootPart is anchored/made transparent instead of using PrimaryPart = nil, preventing unintended fall deaths
-- **Material constants** — TRAIL_MATERIAL and BIKE_MATERIAL replace hardcoded Enum.Material.Neon
+- Client-side prediction with input buffering and grid-snapped 90 degree turns
+- Server authority with fixed-rate tick (30 Hz), ping-compensated turn validation, and UnreliableRemoteEvent state broadcasting
+- Decorative trails - server-authoritative trail parts with client-side instant feedback
+- Math-based collision - axis-aligned line intersection (no raycasts or Touched) with self-hit and other-player detection
+- Arena bounds - configurable size (default 4096), kills players who exit
+- Enemy interpolation - snapshot-based rendering of other players
+- Character anchoring - HumanoidRootPart is anchored/made transparent instead of using PrimaryPart = nil, preventing unintended fall deaths
+- Material constants - TRAIL_MATERIAL and BIKE_MATERIAL replace hardcoded Enum.Material.Neon
 
 ## Not Yet Implemented
 
-- **Safe zone** — never written
-- **AI bots** — stub only
-- **Bike glow / death particles** — stub only
-- **Bloom / dark arena lighting** — not in source (was applied directly in Studio, lost on rebuild)
+- Safe zone - never written
+- AI bots - stub only
+- Bike glow / death particles - stub only
+- Bloom / dark arena lighting - not in source (was applied directly in Studio, lost on rebuild)
 
 ## What's Next
 
@@ -46,18 +46,18 @@ Phases A–E (partial) are implemented. Key features:
 
 ---
 
-## Workflow Rule: Source Files Are Permanent, MCP Is Not
+## Workflow Rules (Active)
 
-**Do NOT use MCP for changes you want to keep.** MCP modifications live only in the current Studio session and the .rbxlx file. When you run rojo build, they are permanently lost.
+These rules must be followed during development to avoid data loss or stale builds:
 
-**Always make permanent changes in the Rojo project:**
-
-| What | Where |
-|------|-------|
-| Game logic | src/client/*.luau, src/server/*.luau |
-| Shared config | src/shared/Constants.luau, src/shared/Types.luau |
-| Lighting, Bloom, instances | default.project.json |
-| Visual effects code | src/client/BikeVisuals.luau |
+| Rule | Detail |
+|------|--------|
+| Source files are the source of truth | All permanent changes go into src/ or default.project.json. MCP/Roblox Studio is for temporary inspection only. |
+| rojo build to rebuild | Always run `rojo build -o "Roblox Tron Game.rbxlx"` to create a fresh place file. Do not edit the .rbxlx directly. |
+| Avoid BOM corruption | Use `[System.IO.File]::WriteAllText(path, content)` in PowerShell (UTF-8 no BOM). Never use `Set-Content -Encoding UTF8` which adds BOM bytes and breaks scripts. |
+| Commit to git | Changes must be committed (git add -A; git commit; git push) to persist permanently. |
+| rojo serve for live dev | Run `rojo serve` in the project directory. Connect the Rojo Studio plugin to localhost:34872 for instant file sync. Kill stale serve processes with `Stop-Process -Name rojo` before restarting. |
+| Close Studio for clean builds | If using .rbxlx directly (not rojo serve), close Studio before rebuilding to avoid .rbxlx.lock conflicts. |
 
 ---
 
