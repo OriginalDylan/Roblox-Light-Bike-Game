@@ -28,18 +28,15 @@ function validateAndApplyTurn(player, turnPos, newDir, timestamp)
     local state = states[player]
     if not state or not state.alive then return end
 
-    -- Validate newDir is perpendicular to current direction (dot product approximately 0)
     local dot = state.direction.X * newDir.X + state.direction.Z * newDir.Z
     if math.abs(dot) > 0.1 then
         return
     end
 
-    -- Validate newDir is a unit vector on X or Z
     if math.abs(newDir.X) + math.abs(newDir.Z) ~= 1 then
         return
     end
 
-    -- Ping compensation: distance check
     local now = os.clock()
     local elapsed = now - state.lastTurnTime
     local maxDistance = Constants.BIKE_SPEED * math.max(elapsed, 0.016) * 1.2

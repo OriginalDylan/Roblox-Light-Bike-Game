@@ -10,7 +10,7 @@ local function makePart()
     local p = Instance.new("Part")
     p.Anchored = true
     p.CanCollide = false
-    p.Material = Enum.Material.Neon
+    p.Material = Constants.TRAIL_MATERIAL
     p.Color = color
     p.Parent = Workspace
     return p

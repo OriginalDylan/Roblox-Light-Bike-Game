@@ -81,18 +81,31 @@ function spawnBike(char: Model)
 
 
     char:SetAttribute("TronBike", true)
+    local root = char:FindFirstChild("HumanoidRootPart")
+    if not root then
+        for _, child in char:GetChildren() do
+            if child:IsA("BasePart") then
+                root = child
+                break
+            end
+        end
+    end
+    if root then
+        root.Anchored = true
+        root.Transparency = 1
+        root.CanCollide = false
+    end
     for _, child in char:GetChildren() do
-        if child:IsA("BasePart") then
+        if child:IsA("BasePart") and child ~= root then
             child.Transparency = 1
         end
     end
-    char.PrimaryPart = nil
 
     bike = Instance.new("Part")
     bike.Name = "Lightbike"
     bike.Anchored = true
     bike.CanCollide = false
-    bike.Material = Enum.Material.Neon
+    bike.Material = Constants.BIKE_MATERIAL
     bike.Color = playerColor
     bike.Size = Constants.BIKE_SIZE
     bike.CFrame = CFrame.lookAt(position, position + direction)

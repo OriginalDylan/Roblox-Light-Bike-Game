@@ -43,7 +43,7 @@ local function createSegmentPart(startPos, endPos, color)
     local seg = Instance.new("Part")
     seg.Anchored = true
     seg.CanCollide = false
-    seg.Material = Enum.Material.Neon
+    seg.Material = Constants.TRAIL_MATERIAL
     seg.Color = color
     seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
     seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
@@ -104,7 +104,7 @@ function TrailManager.updateActiveSegment(player, currentPos, lastTurnPos)
         data.activePart = Instance.new("Part")
         data.activePart.Anchored = true
         data.activePart.CanCollide = false
-        data.activePart.Material = Enum.Material.Neon
+        data.activePart.Material = Constants.TRAIL_MATERIAL
         data.activePart.Color = data.color
         data.activePart.Parent = Workspace
     end

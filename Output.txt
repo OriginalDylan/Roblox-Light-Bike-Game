@@ -1,8 +1,8 @@
-  21:09:29.278  [Server] Bootstrapping Tron Lightbike server modules...  -  Server - Server:18
-  21:09:29.278  [Server] Constants loaded: BIKE_SPEED = 60 | TICK_RATE = 30  -  Server - Server:19
-  21:09:29.278  [Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena  -  Server - Server:20
-  21:09:29.278  [Server] All server modules initialized successfully.  -  Server - Server:30
-  21:09:29.614  Attempted to call require with invalid argument(s).  -  Client - Client:14
-  21:09:29.614  Stack Begin  -  Studio
-  21:09:29.614  Script 'Players.HotwingsSpicy.PlayerScripts.Client', Line 14  -  Studio - Client:14
-  21:09:29.614  Stack End  -  Studio
+
+  20:32:04.300  [MatchManager] Initialized  -  Server - MatchManager:7
+  20:32:04.300  [Server] All server modules initialized successfully.  -  Server - Server:30
+  20:32:04.446  [PlatformLeaderboard] Fetcher request failed  -  Server
+  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardPush' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabOpened' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  20:32:04.447  checkRemoteAgainstAllowList: a remote was added to a protected container with non-allowlisted name 'PlatformLeaderboardTabClosed' and has been disabled (see go/lua-apps-remotes)  -  Studio
+  20:32:04.581  [GameStateManager] Player added: HotwingsSpicy  -  Server - GameStateManager:

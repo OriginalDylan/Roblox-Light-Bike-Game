@@ -63,7 +63,7 @@ function createPlayerState(player)
     bike.Name = player.Name .. "Bike"
     bike.Anchored = true
     bike.CanCollide = false
-    bike.Material = Enum.Material.Neon
+    bike.Material = Constants.BIKE_MATERIAL
     bike.Color = color
     bike.Size = Constants.BIKE_SIZE
     bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + Constants.DIRECTIONS.NORTH)

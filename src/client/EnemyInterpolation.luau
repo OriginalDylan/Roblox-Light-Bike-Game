@@ -38,7 +38,7 @@ function ensureEnemyData(userId, colorIndex)
     local bike = Instance.new("Part")
     bike.Anchored = true
     bike.CanCollide = false
-    bike.Material = Enum.Material.Neon
+    bike.Material = Constants.BIKE_MATERIAL
     bike.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
     bike.Size = Constants.BIKE_SIZE
     bike.Parent = Workspace
@@ -46,7 +46,7 @@ function ensureEnemyData(userId, colorIndex)
     local activeTrail = Instance.new("Part")
     activeTrail.Anchored = true
     activeTrail.CanCollide = false
-    activeTrail.Material = Enum.Material.Neon
+    activeTrail.Material = Constants.TRAIL_MATERIAL
     activeTrail.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
     activeTrail.Parent = Workspace
 
@@ -78,7 +78,7 @@ function onReplicateTurn(userId, segment)
     local part = Instance.new("Part")
     part.Anchored = true
     part.CanCollide = false
-    part.Material = Enum.Material.Neon
+    part.Material = Constants.TRAIL_MATERIAL
     part.Color = data.bike.Color
     part.Parent = Workspace
 
