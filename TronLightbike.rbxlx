@@ -1,0 +1,1338 @@
+<roblox version="4">
+  <Item class="Lighting" referent="0">
+    <Properties>
+      <string name="Name">Lighting</string>
+      <Color3 name="Ambient">
+        <R>0</R>
+        <G>0</G>
+        <B>0</B>
+      </Color3>
+      <float name="Brightness">2</float>
+      <bool name="GlobalShadows">true</bool>
+      <bool name="Outlines">false</bool>
+      <token name="Technology">1</token>
+    </Properties>
+  </Item>
+  <Item class="ReplicatedStorage" referent="1">
+    <Properties>
+      <string name="Name">ReplicatedStorage</string>
+    </Properties>
+    <Item class="RemoteEvent" referent="2">
+      <Properties>
+        <string name="Name">DeathEvent</string>
+      </Properties>
+    </Item>
+    <Item class="RemoteEvent" referent="3">
+      <Properties>
+        <string name="Name">ReplicateTurn</string>
+      </Properties>
+    </Item>
+    <Item class="Folder" referent="4">
+      <Properties>
+        <string name="Name">Shared</string>
+      </Properties>
+      <Item class="ModuleScript" referent="5">
+        <Properties>
+          <string name="Name">Constants</string>
+          <string name="Source"><![CDATA[return {
+    BIKE_SPEED       = 60,
+    BIKE_SIZE        = Vector3.new(2, 1, 4),
+    TURN_ANGLE       = 90,
+    GRID_SIZE        = 2,
+    ARENA_SIZE       = 4096,
+    TICK_RATE        = 30,
+    TICK_INTERVAL    = 1 / 30,
+    TRAIL_HEIGHT     = 3,
+    TRAIL_WIDTH      = 0.5,
+    TRAIL_FADE_TIME  = 10,
+    TRAIL_MATERIAL   = Enum.Material.SmoothPlastic,
+    BIKE_MATERIAL    = Enum.Material.SmoothPlastic,
+    MAX_TURN_RATE    = 8,
+    INTERP_DELAY     = 0.1,
+    AI_SPEED         = 42,
+    COLORS = {
+        Color3.fromRGB(0, 255, 255),
+        Color3.fromRGB(255, 128, 0),
+        Color3.fromRGB(255, 0, 255),
+        Color3.fromRGB(0, 255, 0),
+    },
+    DIRECTIONS = {
+        EAST  = Vector3.new(1, 0, 0),
+        WEST  = Vector3.new(-1, 0, 0),
+        SOUTH = Vector3.new(0, 0, 1),
+        NORTH = Vector3.new(0, 0, -1),
+    },
+    SPAWN_Y          = 1,
+}
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="6">
+        <Properties>
+          <string name="Name">GameState</string>
+          <string name="Source">local Constants = require(script.Parent.Constants)
+
+local GameState = {}
+
+function GameState.isHorizontal(seg)
+    return seg.startZ == seg.endZ
+end
+
+function GameState.isVertical(seg)
+    return seg.startX == seg.endX
+end
+
+function GameState.segmentsIntersect(segA, segB)
+    local aHorizontal = GameState.isHorizontal(segA)
+    local bHorizontal = GameState.isHorizontal(segB)
+
+    if aHorizontal ~= bHorizontal then
+        local hSeg, vSeg
+        if aHorizontal then
+            hSeg = segA
+            vSeg = segB
+        else
+            hSeg = segB
+            vSeg = segA
+        end
+
+        local hMinX = math.min(hSeg.startX, hSeg.endX)
+        local hMaxX = math.max(hSeg.startX, hSeg.endX)
+        local vMinZ = math.min(vSeg.startZ, vSeg.endZ)
+        local vMaxZ = math.max(vSeg.startZ, vSeg.endZ)
+
+        return vSeg.startX &gt;= hMinX and vSeg.startX &lt;= hMaxX
+           and hSeg.startZ &gt;= vMinZ and hSeg.startZ &lt;= vMaxZ
+    else
+        if aHorizontal then
+            if segA.startZ ~= segB.startZ then
+                return false
+            end
+            local aMinX = math.min(segA.startX, segA.endX)
+            local aMaxX = math.max(segA.startX, segA.endX)
+            local bMinX = math.min(segB.startX, segB.endX)
+            local bMaxX = math.max(segB.startX, segB.endX)
+            return aMinX &lt;= bMaxX and bMinX &lt;= aMaxX
+        else
+            if segA.startX ~= segB.startX then
+                return false
+            end
+            local aMinZ = math.min(segA.startZ, segA.endZ)
+            local aMaxZ = math.max(segA.startZ, segA.endZ)
+            local bMinZ = math.min(segB.startZ, segB.endZ)
+            local bMaxZ = math.max(segB.startZ, segB.endZ)
+            return aMinZ &lt;= bMaxZ and bMinZ &lt;= aMaxZ
+        end
+    end
+end
+
+function GameState.pointHitsSegment(x, z, seg)
+    if GameState.isHorizontal(seg) then
+        if z ~= seg.startZ then return false end
+        local minX = math.min(seg.startX, seg.endX)
+        local maxX = math.max(seg.startX, seg.endX)
+        return x &gt;= minX and x &lt;= maxX
+    else
+        if x ~= seg.startX then return false end
+        local minZ = math.min(seg.startZ, seg.endZ)
+        local maxZ = math.max(seg.startZ, seg.endZ)
+        return z &gt;= minZ and z &lt;= maxZ
+    end
+end
+
+function GameState.isInsideArena(x, z)
+    local half = Constants.ARENA_SIZE / 2
+    return x &gt;= -half and x &lt;= half and z &gt;= -half and z &lt;= half
+end
+
+function GameState.makeSegment(startX, startZ, endX, endZ)
+    return {
+        startX = startX,
+        startZ = startZ,
+        endX = endX,
+        endZ = endZ,
+    }
+end
+
+function GameState.getActiveSegment(lastTurnPos, currentPos)
+    return GameState.makeSegment(
+        lastTurnPos.X, lastTurnPos.Z,
+        currentPos.X, currentPos.Z
+    )
+end
+
+return GameState</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="7">
+        <Properties>
+          <string name="Name">Types</string>
+          <string name="Source"><![CDATA[--[[
+    Types.luau
+    ==========
+    Luau type definitions shared between client and server.
+    These keep the data structures consistent across the network boundary.
+]]
+
+-- A single finalized trail segment stored as coordinate pairs.
+-- Movement is axis-aligned, so each segment is either horizontal (X-axis) or vertical (Z-axis).
+-- startY/endY are omitted because Y is constant (SPAWN_Y).
+export type TrailSegment = {
+    startX: number,
+    startZ: number,
+    endX: number,
+    endZ: number,
+}
+
+-- Per-player state tracked on the server.
+-- The server owns this table; clients receive snapshots of it.
+export type PlayerState = {
+    player: Player,
+    bikePart: Part?,
+    direction: Vector3,
+    position: Vector3,
+    lastTurnPosition: Vector3,
+    lastTurnTime: number,
+    trailHistory: { TrailSegment },
+    alive: boolean,
+    color: Color3,
+    colorIndex: number,
+}
+
+-- A single player's data within a state snapshot, serialized for network transit.
+-- Vector3s are broken into components to keep the payload small.
+export type PlayerSnapshot = {
+    userId: number,
+    posX: number,
+    posZ: number,
+    dirX: number,
+    dirZ: number,
+    alive: boolean,
+    colorIndex: number,
+    trail: { TrailSegment },
+}
+
+-- The full game state snapshot broadcast to all clients every tick via UnreliableRemoteEvent.
+export type GameStateSnapshot = {
+    tick: number,
+    players: { PlayerSnapshot },
+}
+
+-- Input buffer entry for queued turns (client-side grid snapping).
+export type QueuedTurn = {
+    newDirection: Vector3,
+    timestamp: number,
+}
+
+return nil
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="UnreliableRemoteEvent" referent="8">
+      <Properties>
+        <string name="Name">StateUpdate</string>
+      </Properties>
+    </Item>
+    <Item class="RemoteEvent" referent="9">
+      <Properties>
+        <string name="Name">TurnEvent</string>
+      </Properties>
+    </Item>
+  </Item>
+  <Item class="ServerScriptService" referent="10">
+    <Properties>
+      <string name="Name">ServerScriptService</string>
+    </Properties>
+    <Item class="Script" referent="11">
+      <Properties>
+        <string name="Name">Server</string>
+        <token name="RunContext">0</token>
+        <string name="Source"><![CDATA[--[[
+    init.server.luau
+    ================
+    Server bootstrapper. Requires and initializes all server modules.
+    No game logic lives here - only the load order.
+]]
+
+local Constants = require(game.ReplicatedStorage.Shared.Constants)
+local GameState = require(game.ReplicatedStorage.Shared.GameState)
+
+local LightbikeServer = require(script.LightbikeServer)
+local GameStateManager = require(script.GameStateManager)
+local TrailManager = require(script.TrailManager)
+local CollisionService = require(script.CollisionService)
+local MatchManager = require(script.MatchManager)
+local AIBot = require(script.AIBot)
+
+print("[Server] Bootstrapping Tron Lightbike server modules...")
+print("[Server] Constants loaded: BIKE_SPEED =", Constants.BIKE_SPEED, "| TICK_RATE =", Constants.TICK_RATE)
+print("[Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena")
+
+-- Initialize modules (stubs for now - they just print in Phase A)
+TrailManager.init()
+GameStateManager.init()
+LightbikeServer.init()
+CollisionService.init()
+MatchManager.init()
+AIBot.init()
+
+print("[Server] All server modules initialized successfully.")
+]]></string>
+      </Properties>
+      <Item class="ModuleScript" referent="12">
+        <Properties>
+          <string name="Name">AIBot</string>
+          <string name="Source"><![CDATA[local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateManager = require(script.Parent.GameStateManager)
+local TrailManager = require(script.Parent.TrailManager)
+
+local AIBot = {}
+
+function AIBot.init()
+    local fakePlayer = {
+        UserId = 9999,
+        Name = "AI_Bot",
+    }
+
+    local aiSpeed = Constants.AI_SPEED
+    local colorIndex = 2
+    local color = Constants.COLORS[colorIndex]
+    local spawnPos = Vector3.new(-200, Constants.SPAWN_Y, -200)
+
+    local bike = Instance.new("Part")
+    bike.Name = "AIBot_Bike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = color
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + Constants.DIRECTIONS.EAST)
+    bike.Parent = Workspace
+
+    local state = {
+        player = fakePlayer,
+        bikePart = bike,
+        direction = Constants.DIRECTIONS.EAST,
+        position = spawnPos,
+        lastTurnPosition = spawnPos,
+        lastTurnTime = os.clock(),
+        trailHistory = {},
+        alive = true,
+        color = color,
+        colorIndex = colorIndex,
+        isAI = true,
+    }
+
+    local playerStates = GameStateManager.getPlayerStates()
+    playerStates[fakePlayer] = state
+    TrailManager.addPlayer(fakePlayer, color)
+
+    local PATH = {
+        { dir = Constants.DIRECTIONS.EAST,  dur = 3.0 },
+        { dir = Constants.DIRECTIONS.SOUTH, dur = 3.0 },
+        { dir = Constants.DIRECTIONS.WEST,  dur = 3.0 },
+        { dir = Constants.DIRECTIONS.NORTH, dur = 3.0 },
+    }
+    local pathIdx = 1
+    local pathTimer = 0
+    local tickAcc = 0
+
+    RunService.Heartbeat:Connect(function(dt)
+        if not state.alive then return end
+
+        tickAcc = tickAcc + dt
+        while tickAcc >= Constants.TICK_INTERVAL do
+            tickAcc = tickAcc - Constants.TICK_INTERVAL
+
+            state.position = state.position + state.direction * aiSpeed * Constants.TICK_INTERVAL
+            if state.bikePart then
+                state.bikePart.CFrame = CFrame.lookAt(state.position, state.position + state.direction)
+            end
+            TrailManager.updateActiveSegment(fakePlayer, state.position, state.lastTurnPosition)
+
+            pathTimer = pathTimer + Constants.TICK_INTERVAL
+            local cur = PATH[pathIdx]
+            if pathTimer >= cur.dur then
+                pathTimer = 0
+                pathIdx = pathIdx % #PATH + 1
+                local next = PATH[pathIdx]
+                GameStateManager.applyTurn(fakePlayer, state.position, next.dir)
+            end
+        end
+    end)
+
+    print("[AIBot] Initialized - spawned at", spawnPos, "speed", aiSpeed)
+end
+
+return AIBot
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="13">
+        <Properties>
+          <string name="Name">CollisionService</string>
+          <string name="Source">local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
+
+local CollisionService = {}
+
+function CollisionService.init()
+    print("[CollisionService] Initialized")
+end
+
+function CollisionService.checkAll(playerStates)
+    local dead = {}
+    for player, state in pairs(playerStates) do
+        if not state.alive then continue end
+        if dead[player] then continue end
+
+        if not GameStateHelpers.isInsideArena(state.position.X, state.position.Z) then
+            dead[player] = true
+        end
+
+        local active = GameStateHelpers.getActiveSegment(state.lastTurnPosition, state.position)
+
+        for i = 1, #state.trailHistory - 1 do
+            if GameStateHelpers.segmentsIntersect(active, state.trailHistory[i]) then
+                dead[player] = true
+                break
+            end
+        end
+
+        for otherPlayer, otherState in pairs(playerStates) do
+            if otherPlayer == player then continue end
+
+            for _, seg in pairs(otherState.trailHistory) do
+                if GameStateHelpers.segmentsIntersect(active, seg) then
+                    dead[player] = true
+                    break
+                end
+            end
+
+            if otherState.alive then
+                local otherActive = GameStateHelpers.getActiveSegment(otherState.lastTurnPosition, otherState.position)
+                if GameStateHelpers.segmentsIntersect(active, otherActive) then
+                    dead[player] = true
+                    dead[otherPlayer] = true
+                end
+            end
+        end
+    end
+    return dead
+end
+
+return CollisionService</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="14">
+        <Properties>
+          <string name="Name">GameStateManager</string>
+          <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
+local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
+local TrailManager = require(script.Parent.TrailManager)
+local CollisionService = require(script.Parent.CollisionService)
+local MatchManager = require(script.Parent.MatchManager)
+
+local GameStateManager = {}
+
+local playerStates = {}
+local tickAccumulator = 0
+local tickNumber = 0
+
+function GameStateManager.getPlayerStates()
+    return playerStates
+end
+
+function GameStateManager.init()
+    Players.PlayerAdded:Connect(function(player)
+        createPlayerState(player)
+    end)
+    Players.PlayerRemoving:Connect(function(player)
+        removePlayerState(player)
+    end)
+    for _, player in Players:GetPlayers() do
+        createPlayerState(player)
+    end
+
+    RunService.Heartbeat:Connect(function(dt)
+        tickAccumulator = tickAccumulator + dt
+        while tickAccumulator >= Constants.TICK_INTERVAL do
+            tickAccumulator = tickAccumulator - Constants.TICK_INTERVAL
+            serverTick(Constants.TICK_INTERVAL)
+        end
+    end)
+
+    print("[GameStateManager] Initialized")
+end
+
+function createPlayerState(player)
+    local color = Constants.COLORS[(player.UserId - 1) % #Constants.COLORS + 1]
+    local spawnPos = Vector3.new(0, Constants.SPAWN_Y, 0)
+
+    local bike = Instance.new("Part")
+    bike.Name = player.Name .. "Bike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = color
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + Constants.DIRECTIONS.NORTH)
+    bike.Parent = Workspace
+
+    local state = {
+        player = player,
+        bikePart = bike,
+        direction = Constants.DIRECTIONS.NORTH,
+        position = spawnPos,
+        lastTurnPosition = spawnPos,
+        lastTurnTime = os.clock(),
+        trailHistory = {},
+        alive = true,
+        color = color,
+        colorIndex = (player.UserId - 1) % #Constants.COLORS + 1,
+    }
+    playerStates[player] = state
+    TrailManager.addPlayer(player, color)
+    print("[GameStateManager] Player added:", player.Name)
+end
+
+function removePlayerState(player)
+    local state = playerStates[player]
+    if state then
+        if state.bikePart then
+            state.bikePart:Destroy()
+        end
+        TrailManager.removePlayer(player)
+        playerStates[player] = nil
+        print("[GameStateManager] Player removed:", player.Name)
+    end
+end
+
+function serverTick(dt)
+    tickNumber = tickNumber + 1
+    for _, state in playerStates do
+        if state.alive and not state.isAI then
+            state.position = state.position + state.direction * Constants.BIKE_SPEED * dt
+            if state.bikePart then
+                state.bikePart.CFrame = CFrame.lookAt(state.position, state.position + state.direction)
+            end
+            TrailManager.updateActiveSegment(state.player, state.position, state.lastTurnPosition)
+        end
+    end
+
+    local dead = CollisionService.checkAll(playerStates)
+    for player, _ in dead do
+        local state = playerStates[player]
+        if not state or not state.alive then continue end
+        state.alive = false
+        if state.bikePart then
+            state.bikePart:Destroy()
+            state.bikePart = nil
+        end
+        TrailManager.onDeath(player, state.position, state.lastTurnPosition)
+        MatchManager.killBike(player)
+    end
+    broadcastState()
+end
+
+function broadcastState()
+    local snapshot = { t = tickNumber, p = {} }
+    for _, state in playerStates do
+        local ps = {
+            u = state.player.UserId,
+            x = state.position.X,
+            z = state.position.Z,
+            dx = state.direction.X,
+            dz = state.direction.Z,
+            a = state.alive,
+            c = state.colorIndex,
+            lx = state.lastTurnPosition.X,
+            lz = state.lastTurnPosition.Z,
+        }
+        snapshot.p[#snapshot.p + 1] = ps
+    end
+    StateUpdate:FireAllClients(snapshot)
+end
+
+function GameStateManager.applyTurn(player, turnPos, newDir)
+    local state = playerStates[player]
+    if not state or not state.alive then return end
+
+    local seg = GameStateHelpers.makeSegment(
+        state.lastTurnPosition.X, state.lastTurnPosition.Z,
+        turnPos.X, turnPos.Z
+    )
+    table.insert(state.trailHistory, seg)
+    ReplicateTurn:FireAllClients(player.UserId, seg)
+
+    TrailManager.onTurn(player, turnPos, state.lastTurnPosition)
+    state.lastTurnPosition = turnPos
+    state.position = turnPos
+    state.direction = newDir
+    state.lastTurnTime = os.clock()
+end
+
+return GameStateManager
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="15">
+        <Properties>
+          <string name="Name">LightbikeServer</string>
+          <string name="Source">--[[
+    LightbikeServer.luau
+    ====================
+    Server-side turn validation and replication.
+    - Listens for TurnEvent from clients
+    - Ping compensation: validates turn distance is within speed * elapsed * 1.2
+    - Rejects invalid turns (cheating, lag exploits)
+    - Calls GameStateManager.applyTurn() for valid turns (which also fires ReplicateTurn)
+]]
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateManager = require(script.Parent.GameStateManager)
+
+local LightbikeServer = {}
+
+function LightbikeServer.init()
+    TurnEvent.OnServerEvent:Connect(function(player, turnPos, newDir, timestamp)
+        validateAndApplyTurn(player, turnPos, newDir, timestamp)
+    end)
+    print("[LightbikeServer] Initialized")
+end
+
+function validateAndApplyTurn(player, turnPos, newDir, timestamp)
+    local states = GameStateManager.getPlayerStates()
+    local state = states[player]
+    if not state or not state.alive then return end
+
+    local dot = state.direction.X * newDir.X + state.direction.Z * newDir.Z
+    if math.abs(dot) &gt; 0.1 then
+        return
+    end
+
+    if math.abs(newDir.X) + math.abs(newDir.Z) ~= 1 then
+        return
+    end
+
+    local now = os.clock()
+    local elapsed = now - state.lastTurnTime
+    local maxDistance = Constants.BIKE_SPEED * math.max(elapsed, 0.016) * 1.2
+    local actualDistance = (turnPos - state.lastTurnPosition).Magnitude
+    if actualDistance &gt; maxDistance then
+        return
+    end
+
+    GameStateManager.applyTurn(player, turnPos, newDir)
+end
+
+return LightbikeServer</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="16">
+        <Properties>
+          <string name="Name">MatchManager</string>
+          <string name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
+
+local MatchManager = {}
+
+function MatchManager.init()
+    print("[MatchManager] Initialized")
+end
+
+function MatchManager.killBike(player)
+    if typeof(player) == "Instance" then
+        DeathEvent:FireClient(player)
+    end
+end
+
+return MatchManager
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="17">
+        <Properties>
+          <string name="Name">TrailManager</string>
+          <string name="Source"><![CDATA[local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local TrailManager = {}
+
+local trailData = {}
+
+function TrailManager.init()
+    print("[TrailManager] Initialized")
+end
+
+function TrailManager.addPlayer(player, color)
+    trailData[player] = {
+        segments = {},
+        activePart = nil,
+        lastLength = 0,
+        color = color,
+    }
+end
+
+function TrailManager.removePlayer(player)
+    local data = trailData[player]
+    if data then
+        for _, part in data.segments do
+            part:Destroy()
+        end
+        if data.activePart then
+            data.activePart:Destroy()
+        end
+        trailData[player] = nil
+    end
+end
+
+local function createSegmentPart(startPos, endPos, color)
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+
+    local seg = Instance.new("Part")
+    seg.Anchored = true
+    seg.CanCollide = false
+    seg.Material = Constants.TRAIL_MATERIAL
+    seg.Color = color
+    seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+    seg.Parent = Workspace
+    return seg
+end
+
+local function scheduleFade(seg, delay)
+    task.delay(delay, function()
+        if seg and seg.Parent then
+            local tween = TweenService:Create(seg, TweenInfo.new(1), { Transparency = 1 })
+            tween:Play()
+            tween.Completed:Connect(function()
+                seg:Destroy()
+            end)
+        end
+    end)
+end
+
+function TrailManager.onTurn(player, turnPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, turnPos, data.color)
+    table.insert(data.segments, seg)
+
+    scheduleFade(seg, Constants.TRAIL_FADE_TIME)
+end
+
+function TrailManager.onDeath(player, deathPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, deathPos, data.color)
+    table.insert(data.segments, seg)
+
+    for _, seg in data.segments do
+        scheduleFade(seg, 0)
+    end
+    data.segments = {}
+end
+
+function TrailManager.updateActiveSegment(player, currentPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if not data.activePart then
+        data.activePart = Instance.new("Part")
+        data.activePart.Anchored = true
+        data.activePart.CanCollide = false
+        data.activePart.Material = Constants.TRAIL_MATERIAL
+        data.activePart.Color = data.color
+        data.activePart.Parent = Workspace
+    end
+
+    local startPos = lastTurnPos
+    local endPos = currentPos
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+
+    data.activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    data.activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+return TrailManager
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="SoundService" referent="18">
+    <Properties>
+      <string name="Name">SoundService</string>
+      <bool name="RespectFilteringEnabled">true</bool>
+    </Properties>
+  </Item>
+  <Item class="StarterPlayer" referent="19">
+    <Properties>
+      <string name="Name">StarterPlayer</string>
+    </Properties>
+    <Item class="StarterPlayerScripts" referent="20">
+      <Properties>
+        <string name="Name">StarterPlayerScripts</string>
+      </Properties>
+      <Item class="LocalScript" referent="21">
+        <Properties>
+          <string name="Name">Client</string>
+          <string name="Source"><![CDATA[--[[
+    init.client.luau
+    ================
+    Client bootstrapper. Requires and initializes all client modules.
+    No game logic lives here - only the load order.
+]]
+
+local Constants = require(game.ReplicatedStorage.Shared.Constants)
+local GameState = require(game.ReplicatedStorage.Shared.GameState)
+
+local LightbikeController = require(script.LightbikeController)
+
+local EnemyInterpolation = require(script.EnemyInterpolation)
+local BikeVisuals = require(script.BikeVisuals)
+
+print("[Client] Bootstrapping Tron Lightbike client modules...")
+print("[Client] Constants loaded: BIKE_SPEED =", Constants.BIKE_SPEED, "| ARENA_SIZE =", Constants.ARENA_SIZE)
+print("[Client] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena")
+
+-- Initialize modules (stubs for now - they just print in Phase A)
+LightbikeController.init()
+EnemyInterpolation.init()
+
+print("[Client] All client modules initialized successfully.")
+]]></string>
+        </Properties>
+        <Item class="ModuleScript" referent="22">
+          <Properties>
+            <string name="Name">BikeVisuals</string>
+            <string name="Source"><![CDATA[--[[
+    BikeVisuals.client.luau (stub)
+    ==============================
+    Phase E: Local visual effects.
+    Bike glow (PointLight), ignition particles, death explosion, trail shimmer.
+]]
+
+local BikeVisuals = {}
+
+function BikeVisuals.init()
+    -- Phase E implementation goes here
+end
+
+return BikeVisuals
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="23">
+          <Properties>
+            <string name="Name">EnemyInterpolation</string>
+            <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
+local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local EnemyInterpolation = {}
+
+local enemyData = {}
+
+function EnemyInterpolation.init()
+    StateUpdate.OnClientEvent:Connect(function(snapshot)
+        renderSnapshot(snapshot)
+    end)
+
+    ReplicateTurn.OnClientEvent:Connect(function(userId, segment)
+        onReplicateTurn(userId, segment)
+    end)
+
+    print("[EnemyInterpolation] Initialized")
+end
+
+function ensureEnemyData(userId, colorIndex)
+    local data = enemyData[userId]
+    if data then return data end
+
+    local bike = Instance.new("Part")
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
+    bike.Size = Constants.BIKE_SIZE
+    bike.Parent = Workspace
+
+    local activeTrail = Instance.new("Part")
+    activeTrail.Anchored = true
+    activeTrail.CanCollide = false
+    activeTrail.Material = Constants.TRAIL_MATERIAL
+    activeTrail.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
+    activeTrail.Parent = Workspace
+
+    data = {
+        bike = bike,
+        trails = {},
+        activeTrail = activeTrail,
+    }
+    enemyData[userId] = data
+    return data
+end
+
+function destroyEnemyData(userId)
+    local data = enemyData[userId]
+    if not data then return end
+    data.bike:Destroy()
+    data.activeTrail:Destroy()
+    for _, t in data.trails do
+        t:Destroy()
+    end
+    enemyData[userId] = nil
+end
+
+function onReplicateTurn(userId, segment)
+    if userId == Players.LocalPlayer.UserId then return end
+    local data = enemyData[userId]
+    if not data then return end
+
+    local part = Instance.new("Part")
+    part.Anchored = true
+    part.CanCollide = false
+    part.Material = Constants.TRAIL_MATERIAL
+    part.Color = data.bike.Color
+    part.Parent = Workspace
+
+    local midX = (segment.startX + segment.endX) / 2
+    local midZ = (segment.startZ + segment.endZ) / 2
+    local dx = segment.endX - segment.startX
+    local dz = segment.endZ - segment.startZ
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    part.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    part.CFrame = CFrame.lookAt(
+        Vector3.new(midX, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ),
+        Vector3.new(midX + dx, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ + dz)
+    )
+    table.insert(data.trails, part)
+end
+
+function renderSnapshot(snapshot)
+    for _, ps in snapshot.p do
+        if ps.u == Players.LocalPlayer.UserId then
+            continue
+        end
+
+        local data = ensureEnemyData(ps.u, ps.c)
+
+        if not ps.a then
+            data.bike.Transparency = 1
+            data.activeTrail.Transparency = 1
+            continue
+        end
+
+        data.bike.Transparency = 0
+        local pos = Vector3.new(ps.x, Constants.SPAWN_Y, ps.z)
+        local dir = Vector3.new(ps.dx, 0, ps.dz)
+        data.bike.CFrame = CFrame.lookAt(pos, pos + dir)
+
+        data.activeTrail.Transparency = 0
+        if ps.lx ~= nil and ps.lz ~= nil then
+            local midX = (ps.lx + ps.x) / 2
+            local midZ = (ps.lz + ps.z) / 2
+            local dx = ps.x - ps.lx
+            local dz = ps.z - ps.lz
+            local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+            data.activeTrail.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+            data.activeTrail.CFrame = CFrame.lookAt(
+                Vector3.new(midX, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ),
+                Vector3.new(midX + dx, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ + dz)
+            )
+        end
+    end
+
+    for userId, data in enemyData do
+        local found = false
+        for _, ps in snapshot.p do
+            if ps.u == userId then
+                found = true
+                break
+            end
+        end
+        if not found then
+            destroyEnemyData(userId)
+        end
+    end
+end
+
+return EnemyInterpolation
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="24">
+          <Properties>
+            <string name="Name">LightbikeController</string>
+            <string name="Source"><![CDATA[--[[
+    LightbikeController.luau
+    ========================
+    Core client-side bike controller.
+    - Replaces StarterCharacter with a Neon Part bike
+    - Grid-snapped 90 degree movement with input buffering
+    - Scriptable camera locked behind/above the bike
+    - Fires TurnEvent to server on each turn
+    - Drives LocalTrailRenderer each frame
+]]
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Workspace = game:GetService("Workspace")
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameState = require(ReplicatedStorage.Shared.GameState)
+local LocalTrailRenderer = require(script.Parent.LocalTrailRenderer)
+
+
+local LightbikeController = {}
+
+local bike: Part? = nil
+local direction: Vector3 = Constants.DIRECTIONS.NORTH
+local position: Vector3 = Vector3.new(0, Constants.SPAWN_Y, 0)
+local lastTurnPosition: Vector3 = position
+local alive: boolean = false
+local inputBuffer: { Vector3 } = {}
+local turnCooldown: number = 0
+local cameraLerpSpeed: number = 8
+local inputConnection: RBXScriptConnection? = nil
+local renderConnection: RBXScriptConnection? = nil
+local playerColor: Color3 = Constants.COLORS[1]
+
+function LightbikeController.init()
+    local player = Players.LocalPlayer
+    if not player then
+        player = Players.PlayerAdded:Wait()
+    end
+
+    player.CharacterAdded:Connect(function(char)
+        task.wait(0.1)
+        spawnBike(char)
+    end)
+
+    DeathEvent.OnClientEvent:Connect(function()
+        LightbikeController.destroy()
+    end)
+
+    playerColor = Constants.COLORS[(player.UserId - 1) % #Constants.COLORS + 1]
+
+    if player.Character then
+        spawnBike(player.Character)
+    end
+end
+
+function spawnBike(char: Model)
+    if bike then
+        bike:Destroy()
+        bike = nil
+    end
+    if inputConnection then
+        inputConnection:Disconnect()
+        inputConnection = nil
+    end
+    if renderConnection then
+        renderConnection:Disconnect()
+        renderConnection = nil
+    end
+    alive = true
+    direction = Constants.DIRECTIONS.NORTH
+    position = Vector3.new(0, Constants.SPAWN_Y, 0)
+    lastTurnPosition = position
+    inputBuffer = {}
+    turnCooldown = 0
+
+
+    char:SetAttribute("TronBike", true)
+    local root = char:FindFirstChild("HumanoidRootPart")
+    if not root then
+        for _, child in char:GetChildren() do
+            if child:IsA("BasePart") then
+                root = child
+                break
+            end
+        end
+    end
+    if root then
+        root.Anchored = true
+        root.Transparency = 1
+        root.CanCollide = false
+    end
+    for _, child in char:GetChildren() do
+        if child:IsA("BasePart") and child ~= root then
+            child.Transparency = 1
+        end
+    end
+
+    bike = Instance.new("Part")
+    bike.Name = "Lightbike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = playerColor
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(position, position + direction)
+    bike.Parent = Workspace
+
+    LocalTrailRenderer.clear()
+    LocalTrailRenderer.setColor(playerColor)
+    LocalTrailRenderer.init(position, direction)
+
+    local camera = Workspace.CurrentCamera
+    camera.CameraType = Enum.CameraType.Scriptable
+    local bikeCF = CFrame.lookAt(position, position + direction)
+    local camOffset = bikeCF:VectorToWorldSpace(Vector3.new(0, 8, 16))
+    camera.CFrame = CFrame.lookAt(position + camOffset, position + direction * 10 + Vector3.new(0, 2, 0))
+
+    inputConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed or not alive then return end
+        if input.KeyCode == Enum.KeyCode.A then
+            queueTurn(1)
+        elseif input.KeyCode == Enum.KeyCode.D then
+            queueTurn(-1)
+        end
+    end)
+
+    renderConnection = RunService.RenderStepped:Connect(function(dt)
+        if not alive or not bike then return end
+        tickBike(dt)
+
+        updateCamera(dt)
+    end)
+end
+
+function queueTurn(sign: number)
+    local newDir = CFrame.Angles(0, math.rad(sign * Constants.TURN_ANGLE), 0) * direction
+    newDir = Vector3.new(math.round(newDir.X), 0, math.round(newDir.Z))
+    table.insert(inputBuffer, newDir)
+end
+
+function tickBike(dt: number)
+    turnCooldown = turnCooldown - dt
+
+    local moveAmount = Constants.BIKE_SPEED * dt
+    position = position + direction * moveAmount
+
+    if #inputBuffer > 0 then
+        if Constants.GRID_SIZE > 0 then
+            local onCrossAxis = direction.X ~= 0 and position.Z or position.X
+            local aligned = math.abs(math.round(onCrossAxis / Constants.GRID_SIZE) * Constants.GRID_SIZE - onCrossAxis) < moveAmount * 1.5
+            if aligned then
+                local newDir = inputBuffer[1]
+                turnComplete(newDir)
+                table.remove(inputBuffer, 1)
+            end
+        else
+            local newDir = inputBuffer[1]
+            turnComplete(newDir)
+            table.remove(inputBuffer, 1)
+        end
+    end
+
+    if turnCooldown <= 0 and #inputBuffer > 0 then
+        if not positionSnapping() then
+            turnComplete(inputBuffer[1])
+            table.remove(inputBuffer, 1)
+        end
+    end
+
+    bike.CFrame = CFrame.lookAt(position, position + direction)
+    LocalTrailRenderer.update(position, lastTurnPosition)
+end
+
+function positionSnapping(): boolean
+    if Constants.GRID_SIZE <= 0 then return false end
+    if direction.X ~= 0 then
+        local snapZ = math.round(position.Z / Constants.GRID_SIZE) * Constants.GRID_SIZE
+        return math.abs(position.Z - snapZ) > 0.1
+    else
+        local snapX = math.round(position.X / Constants.GRID_SIZE) * Constants.GRID_SIZE
+        return math.abs(position.X - snapX) > 0.1
+    end
+end
+
+function turnComplete(newDir: Vector3)
+    LocalTrailRenderer.finalizeSegment(lastTurnPosition, position)
+    direction = newDir
+    lastTurnPosition = position
+    turnCooldown = 0.05
+    TurnEvent:FireServer(lastTurnPosition, direction, os.clock())
+end
+
+function updateCamera(dt: number)
+    local camera = Workspace.CurrentCamera
+    local bikeCF = CFrame.lookAt(position, position + direction)
+    local offset = bikeCF:VectorToWorldSpace(Vector3.new(0, 8, 16))
+    local targetPos = position + offset
+    local targetLook = position + direction * 10 + Vector3.new(0, 2, 0)
+    local targetCF = CFrame.lookAt(targetPos, targetLook)
+    local smoothFactor = 1 - math.exp(-cameraLerpSpeed * dt)
+    camera.CFrame = targetCF
+    camera.FieldOfView = 90 + (Constants.BIKE_SPEED / 10)
+end
+
+function LightbikeController.destroy()
+    if bike then
+        bike:Destroy()
+        bike = nil
+    end
+    LocalTrailRenderer.clear()
+    alive = false
+end
+
+return LightbikeController
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="25">
+          <Properties>
+            <string name="Name">LocalTrailRenderer</string>
+            <string name="Source"><![CDATA[local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local LocalTrailRenderer = {}
+local activePart = nil
+local color = Constants.COLORS[1]
+
+local function makePart()
+    local p = Instance.new("Part")
+    p.Anchored = true
+    p.CanCollide = false
+    p.Material = Constants.TRAIL_MATERIAL
+    p.Color = color
+    p.Parent = Workspace
+    return p
+end
+
+function LocalTrailRenderer.init(initialPos: Vector3, initialDir: Vector3)
+    if activePart then
+        activePart:Destroy()
+    end
+    activePart = makePart()
+    local endPos = initialPos + initialDir * Constants.TRAIL_WIDTH
+    local mid = (initialPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - initialPos.X
+    local dz = endPos.Z - initialPos.Z
+    activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, Constants.TRAIL_WIDTH)
+    activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.update(currentPos: Vector3, lastTurnPos: Vector3)
+    if not activePart then return end
+    local startPos = lastTurnPos
+    local endPos = currentPos
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.finalizeSegment(startPos: Vector3, endPos: Vector3)
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    local seg = makePart()
+    seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.setColor(c: Color3)
+    color = c
+    if activePart then
+        activePart.Color = c
+    end
+end
+
+function LocalTrailRenderer.clear()
+    if activePart then
+        activePart:Destroy()
+        activePart = nil
+    end
+end
+
+return LocalTrailRenderer
+]]></string>
+          </Properties>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="Workspace" referent="26">
+    <Properties>
+      <string name="Name">Workspace</string>
+      <bool name="FilteringEnabled">true</bool>
+      <bool name="NeedsPivotMigration">false</bool>
+    </Properties>
+    <Item class="Part" referent="27">
+      <Properties>
+        <string name="Name">Baseplate</string>
+        <bool name="Anchored">true</bool>
+        <Color3uint8 name="Color3uint8">6512483</Color3uint8>
+        <bool name="Locked">true</bool>
+        <Vector3 name="Position">
+          <X>0</X>
+          <Y>-10</Y>
+          <Z>0</Z>
+        </Vector3>
+        <Vector3 name="size">
+          <X>4096</X>
+          <Y>20</Y>
+          <Z>4096</Z>
+        </Vector3>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>
