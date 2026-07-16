@@ -39,7 +39,106 @@
       "$properties": {
         "FilteringEnabled": true
       },
-      "Baseplate": {
+      "ArenaBounds": {
+      "$className": "Folder",
+      "Wall_North": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [0, 8, -2048],
+          "Size": [4096, 16, 4],
+          "Transparency": 0.3
+        }
+      },
+      "Wall_South": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [0, 8, 2048],
+          "Size": [4096, 16, 4],
+          "Transparency": 0.3
+        }
+      },
+      "Wall_East": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [2048, 8, 0],
+          "Size": [4, 16, 4096],
+          "Transparency": 0.3
+        }
+      },
+      "Wall_West": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [-2048, 8, 0],
+          "Size": [4, 16, 4096],
+          "Transparency": 0.3
+        }
+      },
+      "FloorLine_North": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [0, 0.5, -2048],
+          "Size": [4096, 1, 1],
+          "Transparency": 0.5
+        }
+      },
+      "FloorLine_South": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [0, 0.5, 2048],
+          "Size": [4096, 1, 1],
+          "Transparency": 0.5
+        }
+      },
+      "FloorLine_East": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [2048, 0.5, 0],
+          "Size": [1, 1, 4096],
+          "Transparency": 0.5
+        }
+      },
+      "FloorLine_West": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [0, 0.8, 1],
+          "Material": "Neon",
+          "Position": [-2048, 0.5, 0],
+          "Size": [1, 1, 4096],
+          "Transparency": 0.5
+        }
+      }
+    },
+    "Baseplate": {
         "$className": "Part",
         "$properties": {
           "Anchored": true,

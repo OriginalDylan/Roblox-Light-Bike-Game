@@ -1,0 +1,3166 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Workspace" referent="26">
+		<Properties>
+			<float name="AirDensity">0.00120000006</float>
+			<float name="AirTurbulenceIntensity">0</float>
+			<bool name="AllowThirdPartySales">false</bool>
+			<token name="AuthorityMode">1</token>
+			<token name="AvatarUnificationMode">0</token>
+			<token name="ClientAnimatorThrottling">0</token>
+			<BinaryString name="CollisionGroupData">AQEABP////8HRGVmYXVsdA==</BinaryString>
+			<Ref name="CurrentCamera">RBXDCC267171E994FD296FFFFE7253DB511</Ref>
+			<double name="DistributedGameTime">0</double>
+			<token name="EnableSLIMAvatars">0</token>
+			<bool name="ExplicitAutoJoints">true</bool>
+			<bool name="FallHeightEnabled">true</bool>
+			<float name="FallenPartsDestroyHeight">-500</float>
+			<token name="FluidForces">0</token>
+			<Vector3 name="GlobalWind">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<float name="Gravity">196.199997</float>
+			<token name="IKControlConstraintSupport">0</token>
+			<token name="ImprovedAnimationConstraint">0</token>
+			<token name="ImprovedPhysicsReplication">0</token>
+			<token name="LayeredClothingCacheOptimizations">0</token>
+			<token name="LuauTypeCheckMode">0</token>
+			<token name="MeshPartHeadsAndAccessories">0</token>
+			<token name="MeshStreamingAndImprovedLods">0</token>
+			<token name="ModelStreamingBehavior">0</token>
+			<token name="NextGenerationReplication">0</token>
+			<token name="PathfindingUseImprovedSearch">0</token>
+			<token name="PhysicsSteppingMethod">0</token>
+			<token name="PlayerCharacterDestroyBehavior">0</token>
+			<token name="PlayerScriptsUseInputActionSystem">0</token>
+			<token name="PredictiveStreamingMode">0</token>
+			<token name="PrimalPhysicsSolver">0</token>
+			<token name="RejectCharacterDeletions">0</token>
+			<token name="RenderingCacheOptimizations">0</token>
+			<token name="ReplicateInstanceDestroySetting">0</token>
+			<token name="Retargeting">0</token>
+			<token name="SandboxedInstanceMode">0</token>
+			<token name="SignalBehavior2">0</token>
+			<token name="StreamOutBehavior">0</token>
+			<bool name="StreamingEnabled">false</bool>
+			<token name="StreamingIntegrityMode">0</token>
+			<int name="StreamingMinRadius">64</int>
+			<int name="StreamingTargetRadius">1024</int>
+			<bool name="TerrainWeldsFixed">true</bool>
+			<token name="TouchEventsUseCollisionGroups">0</token>
+			<bool name="TouchesUseCollisionGroups">false</bool>
+			<token name="UseFixedSimulation">0</token>
+			<token name="UseNewLuauTypeSolver">2</token>
+			<token name="ValidateEnabledProximityPrompt">0</token>
+			<token name="LevelOfDetail">0</token>
+			<CoordinateFrame name="ModelMeshCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<Vector3 name="ModelMeshSize">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<token name="ModelStreamingMode">0</token>
+			<bool name="NeedsPivotMigration">false</bool>
+			<Ref name="PrimaryPart">null</Ref>
+			<float name="ScaleFactor">1</float>
+			<SharedString name="SlimHash">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<OptionalCoordinateFrame name="WorldPivotData"></OptionalCoordinateFrame>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Workspace</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002163</UniqueId>
+		</Properties>
+		<Item class="Camera" referent="RBXDCC267171E994FD296FFFFE7253DB511">
+			<Properties>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>20</Y>
+					<Z>20</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>-0</R02>
+					<R10>-0</R10>
+					<R11>0.780868828</R11>
+					<R12>0.624695063</R12>
+					<R20>0</R20>
+					<R21>-0.624695063</R21>
+					<R22>0.780868828</R22>
+				</CoordinateFrame>
+				<Ref name="CameraSubject">null</Ref>
+				<token name="CameraType">0</token>
+				<float name="FieldOfView">70</float>
+				<token name="FieldOfViewMode">0</token>
+				<CoordinateFrame name="Focus">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>-5</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="HeadLocked">true</bool>
+				<float name="HeadScale">1</float>
+				<bool name="VRTiltAndRollEnabled">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Camera</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000251b</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="27">
+			<Properties>
+				<token name="shape">1</token>
+				<token name="formFactorRaw">1</token>
+				<bool name="Anchored">true</bool>
+				<bool name="AudioCanCollide">true</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>-10</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4284636770</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="EnableFluidForces">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>2048</X>
+					<Y>20</Y>
+					<Z>2048</Z>
+				</Vector3>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Baseplate</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002547</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="Terrain" referent="RBX578D714AE5D34EF2BD7BCD126FCE91C4">
+			<Properties>
+				<token name="AcquisitionMethod">0</token>
+				<bool name="Decoration">false</bool>
+				<float name="GrassLength">0.699999988</float>
+				<BinaryString name="MaterialColors"><![CDATA[AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHta
+gcLgc4RKxr21zq2UlJSM]]></BinaryString>
+				<SharedString name="Materials">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<BinaryString name="PhysicsGrid">AgMAAAAAAAAAAAAAAAA=</BinaryString>
+				<BinaryString name="SmoothGrid">AQU=</BinaryString>
+				<bool name="SmoothVoxelsUpgraded">false</bool>
+				<Color3 name="WaterColor">
+					<R>0.0500000007</R>
+					<G>0.330000013</G>
+					<B>0.360000014</B>
+				</Color3>
+				<float name="WaterReflectance">1</float>
+				<float name="WaterTransparency">0.300000012</float>
+				<float name="WaterWaveSize">0.150000006</float>
+				<float name="WaterWaveSpeed">10</float>
+				<bool name="Anchored">true</bool>
+				<bool name="AudioCanCollide">true</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="EnableFluidForces">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>2044</X>
+					<Y>252</Y>
+					<Z>2044</Z>
+				</Vector3>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Terrain</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002548</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="TimerService" referent="RBX997EDEC3D9B2483AB878BB5C557BDCDB">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TimerService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024a8</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CollectionService" referent="RBXCA96412491BC4F268BC9DE2EB5E39974">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CollectionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024a9</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="SoundService" referent="18">
+		<Properties>
+			<bool name="AcousticSimulationEnabled">false</bool>
+			<token name="AmbientReverb">0</token>
+			<token name="AudioApiByDefault">0</token>
+			<token name="CharacterSoundsUseNewApi">0</token>
+			<token name="DefaultListenerLocation">0</token>
+			<bool name="DiffractionEnabled">true</bool>
+			<float name="DistanceFactor">3.32999992</float>
+			<float name="DopplerScale">1</float>
+			<bool name="IsNewExpForAudioApiByDefault">false</bool>
+			<CoordinateFrame name="ListenerCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<Ref name="ListenerObject">null</Ref>
+			<token name="ListenerType">0</token>
+			<bool name="OcclusionEnabled">true</bool>
+			<bool name="RespectFilteringEnabled">true</bool>
+			<bool name="ReverbEnabled">true</bool>
+			<float name="RolloffScale">1</float>
+			<token name="VolumetricAudio">1</token>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">SoundService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024aa</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VideoCaptureService" referent="RBX950807FD04A44093B25DCA6C7D1BCFB7">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VideoCaptureService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024b6</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="NonReplicatedCSGDictionaryService" referent="RBXF3EEF98F34894AE49887C9B7A32F85F8">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">NonReplicatedCSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024b7</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CSGDictionaryService" referent="RBXC04E0DCBD4B648B194B48DE752A8A09C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024b8</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Chat" referent="RBXA8E3A38BAC9343DCA359AF6FAACCC641">
+		<Properties>
+			<bool name="BubbleChatEnabled">false</bool>
+			<bool name="IsAutoMigrated">false</bool>
+			<bool name="LoadDefaultChat">true</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Chat</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024be</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Players" referent="RBX68568E0360A84BF6A0FB621AC62ACC16">
+		<Properties>
+			<bool name="BanningEnabled">true</bool>
+			<bool name="CharacterAutoLoads">true</bool>
+			<int name="MaxPlayersInternal">12</int>
+			<int name="PreferredPlayersInternal">0</int>
+			<float name="RespawnTime">5</float>
+			<bool name="UseStrafingAnimations">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Players</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c0</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedFirst" referent="RBX373F24DCBD1B418B9A2055B98AC37D5A">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedFirst</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c3</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TweenService" referent="RBX36577543302447E98083A13916579C78">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TweenService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c5</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="MaterialService" referent="RBX0853239C53794CE6B0CB6DE47470D160">
+		<Properties>
+			<string name="AsphaltName">Asphalt</string>
+			<string name="BasaltName">Basalt</string>
+			<string name="BrickName">Brick</string>
+			<string name="CardboardName">Cardboard</string>
+			<string name="CarpetName">Carpet</string>
+			<string name="CeramicTilesName">CeramicTiles</string>
+			<string name="ClayRoofTilesName">ClayRoofTiles</string>
+			<string name="CobblestoneName">Cobblestone</string>
+			<string name="ConcreteName">Concrete</string>
+			<string name="CorrodedMetalName">CorrodedMetal</string>
+			<string name="CrackedLavaName">CrackedLava</string>
+			<string name="DiamondPlateName">DiamondPlate</string>
+			<string name="FabricName">Fabric</string>
+			<string name="FoilName">Foil</string>
+			<string name="GlacierName">Glacier</string>
+			<string name="GraniteName">Granite</string>
+			<string name="GrassName">Grass</string>
+			<string name="GroundName">Ground</string>
+			<string name="IceName">Ice</string>
+			<string name="LeafyGrassName">LeafyGrass</string>
+			<string name="LeatherName">Leather</string>
+			<string name="LimestoneName">Limestone</string>
+			<string name="MarbleName">Marble</string>
+			<string name="MetalName">Metal</string>
+			<string name="MudName">Mud</string>
+			<string name="PavementName">Pavement</string>
+			<string name="PebbleName">Pebble</string>
+			<string name="PlasterName">Plaster</string>
+			<string name="PlasticName">Plastic</string>
+			<string name="RockName">Rock</string>
+			<string name="RoofShinglesName">RoofShingles</string>
+			<string name="RubberName">Rubber</string>
+			<string name="SaltName">Salt</string>
+			<string name="SandName">Sand</string>
+			<string name="SandstoneName">Sandstone</string>
+			<string name="SlateName">Slate</string>
+			<string name="SmoothPlasticName">SmoothPlastic</string>
+			<string name="SnowName">Snow</string>
+			<bool name="Use2022MaterialsXml">false</bool>
+			<string name="WoodName">Wood</string>
+			<string name="WoodPlanksName">WoodPlanks</string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">MaterialService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c6</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TextChatService" referent="RBX47A964FD276D4F6B8FC8A695F87AAE2F">
+		<Properties>
+			<bool name="ChatTranslationFTUXShown">true</bool>
+			<bool name="ChatTranslationToggleEnabled">false</bool>
+			<token name="ChatVersion">0</token>
+			<bool name="CreateDefaultCommands">true</bool>
+			<bool name="CreateDefaultTextChannels">true</bool>
+			<token name="EnableProtectedChat">0</token>
+			<bool name="HasSeenDeprecationDialog">false</bool>
+			<bool name="IsLegacyChatDisabled">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TextChatService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c7</UniqueId>
+		</Properties>
+		<Item class="ChatWindowConfiguration" referent="RBXB6F3FF4ED16C444BB3F044ACED6297D3">
+			<Properties>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2999999999999999889</double>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/Montserrat-Medium.ttf</url></CachedFaceId>
+				</Font>
+				<float name="HeightScale">1</float>
+				<token name="HorizontalAlignment">1</token>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<token name="VerticalAlignment">1</token>
+				<float name="WidthScale">1</float>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">ChatWindowConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000254a</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="ChatInputBarConfiguration" referent="RBX445BA1EC771C497AB23CEF1C1010EE6A">
+			<Properties>
+				<bool name="AutocompleteEnabled">true</bool>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2000000000000000111</double>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/Montserrat-Medium.ttf</url></CachedFaceId>
+				</Font>
+				<token name="KeyboardKeyCode">47</token>
+				<Color3 name="PlaceholderColor3">
+					<R>0.698039234</R>
+					<G>0.698039234</G>
+					<B>0.698039234</B>
+				</Color3>
+				<Ref name="TargetTextChannel">null</Ref>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">ChatInputBarConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000254b</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="BubbleChatConfiguration" referent="RBX895122766E154C3CA00FB5D275AC687A">
+			<Properties>
+				<string name="AdorneeName">HumanoidRootPart</string>
+				<Color3 name="BackgroundColor3">
+					<R>0.980392158</R>
+					<G>0.980392158</G>
+					<B>0.980392158</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.10000000000000000555</double>
+				<float name="BubbleDuration">15</float>
+				<float name="BubblesSpacing">6</float>
+				<bool name="Enabled">true</bool>
+				<token name="Font">18</token>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/Montserrat-Medium.ttf</url></CachedFaceId>
+				</Font>
+				<Vector3 name="LocalPlayerStudsOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="MaxBubbles">3</float>
+				<float name="MaxDistance">100</float>
+				<float name="MinimizeDistance">40</float>
+				<bool name="TailVisible">true</bool>
+				<Color3 name="TextColor3">
+					<R>0.223529413</R>
+					<G>0.23137255</G>
+					<B>0.239215687</B>
+				</Color3>
+				<int64 name="TextSize">16</int64>
+				<float name="VerticalStudsOffset">0</float>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">BubbleChatConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000254c</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="ChannelTabsConfiguration" referent="RBXE37193A6121844CE9CE7280F2A10273A">
+			<Properties>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0</double>
+				<bool name="Enabled">false</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/BuilderSans.json</url></Family>
+					<Weight>700</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/BuilderSans-Bold.otf</url></CachedFaceId>
+				</Font>
+				<Color3 name="HoverBackgroundColor3">
+					<R>0.490196079</R>
+					<G>0.490196079</G>
+					<B>0.490196079</B>
+				</Color3>
+				<Color3 name="SelectedTabTextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<Color3 name="TextColor3">
+					<R>0.686274529</R>
+					<G>0.686274529</G>
+					<B>0.686274529</B>
+				</Color3>
+				<int64 name="TextSize">18</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">1</double>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">ChannelTabsConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000254d</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="PermissionsService" referent="RBXB741BC3B55484DFA834B8A1B4681CEC5">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PermissionsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024c9</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PlayerEmulatorService" referent="RBX77C66AB82A4C43E9865C440B1EAC4BD1">
+		<Properties>
+			<bool name="CustomPoliciesEnabled">false</bool>
+			<string name="EmulatedCountryCode"></string>
+			<string name="EmulatedGameLocale"></string>
+			<bool name="PlayerEmulationEnabled">false</bool>
+			<bool name="PseudolocalizationEnabled">false</bool>
+			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
+			<int name="TextElongationFactor">0</int>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PlayerEmulatorService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024ca</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StudioData" referent="RBX1E1DD61E956845AD91ED9CC184D3802F">
+		<Properties>
+			<bool name="EnableScriptCollabByDefaultOnLoad">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StudioData</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024cd</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterPlayer" referent="19">
+		<Properties>
+			<bool name="AllowCustomAnimations">true</bool>
+			<bool name="AutoJumpEnabled">true</bool>
+			<token name="AvatarJointUpgrade_SerializedRollout">0</token>
+			<float name="CameraMaxZoomDistance">400</float>
+			<float name="CameraMinZoomDistance">0.5</float>
+			<token name="CameraMode">0</token>
+			<bool name="CharacterBreakJointsOnDeath">true</bool>
+			<float name="CharacterJumpHeight">7.19999981</float>
+			<float name="CharacterJumpPower">50</float>
+			<float name="CharacterMaxSlopeAngle">89</float>
+			<bool name="CharacterUseJumpPower">true</bool>
+			<float name="CharacterWalkSpeed">16</float>
+			<bool name="ClassicDeath">true</bool>
+			<bool name="CreateDefaultPlayerModule">true</bool>
+			<token name="DevCameraOcclusionMode">0</token>
+			<token name="DevComputerCameraMovementMode">0</token>
+			<token name="DevComputerMovementMode">0</token>
+			<token name="DevTouchCameraMovementMode">0</token>
+			<token name="DevTouchMovementMode">0</token>
+			<token name="EnableDynamicHeads">0</token>
+			<bool name="EnableMouseLockOption">true</bool>
+			<int64 name="GameSettingsAssetIDFace">0</int64>
+			<int64 name="GameSettingsAssetIDHead">0</int64>
+			<int64 name="GameSettingsAssetIDLeftArm">0</int64>
+			<int64 name="GameSettingsAssetIDLeftLeg">0</int64>
+			<int64 name="GameSettingsAssetIDPants">0</int64>
+			<int64 name="GameSettingsAssetIDRightArm">0</int64>
+			<int64 name="GameSettingsAssetIDRightLeg">0</int64>
+			<int64 name="GameSettingsAssetIDShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTeeShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTorso">0</int64>
+			<token name="GameSettingsAvatar">1</token>
+			<token name="GameSettingsR15Collision">0</token>
+			<NumberRange name="GameSettingsScaleRangeBodyType">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHead">0.95 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHeight">0.9 1.05 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeProportion">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeWidth">0.7 1 </NumberRange>
+			<float name="HealthDisplayDistance">100</float>
+			<bool name="LoadCharacterAppearance">true</bool>
+			<token name="LoadCharacterLayeredClothing">0</token>
+			<token name="LuaCharacterController">0</token>
+			<float name="NameDisplayDistance">100</float>
+			<int name="PlayerModuleStatus">0</int>
+			<bool name="UserEmotesEnabled">true</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterPlayer</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024cf</UniqueId>
+		</Properties>
+		<Item class="StarterPlayerScripts" referent="20">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterPlayerScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000253c</UniqueId>
+			</Properties>
+			<Item class="LocalScript" referent="21">
+				<Properties>
+					<ProtectedString name="Source"><![CDATA[--[[
+    init.client.luau
+    ================
+    Client bootstrapper. Requires and initializes all client modules.
+    No game logic lives here - only the load order.
+]]
+
+local Constants = require(game.ReplicatedStorage.Shared.Constants)
+local GameState = require(game.ReplicatedStorage.Shared.GameState)
+
+local LightbikeController = require(script.LightbikeController)
+
+local EnemyInterpolation = require(script.EnemyInterpolation)
+local BikeVisuals = require(script.BikeVisuals)
+
+print("[Client] Bootstrapping Tron Lightbike client modules...")
+print("[Client] Constants loaded: BIKE_SPEED =", Constants.BIKE_SPEED, "| ARENA_SIZE =", Constants.ARENA_SIZE)
+print("[Client] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena")
+
+-- Initialize modules (stubs for now - they just print in Phase A)
+LightbikeController.init()
+EnemyInterpolation.init()
+
+print("[Client] All client modules initialized successfully.")
+]]></ProtectedString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{24824FD0-B98C-4993-8000-2A319514BA60}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">Client</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000253d</UniqueId>
+				</Properties>
+				<Item class="ModuleScript" referent="22">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[--[[
+    BikeVisuals.client.luau (stub)
+    ==============================
+    Phase E: Local visual effects.
+    Bike glow (PointLight), ignition particles, death explosion, trail shimmer.
+]]
+
+local BikeVisuals = {}
+
+function BikeVisuals.init()
+    -- Phase E implementation goes here
+end
+
+return BikeVisuals
+]]></ProtectedString>
+						<string name="ScriptGuid">{CB55F286-64AB-4B59-AAF1-87671A65A229}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">BikeVisuals</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000253e</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="23">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
+local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local EnemyInterpolation = {}
+
+local enemyData = {}
+
+function EnemyInterpolation.init()
+    StateUpdate.OnClientEvent:Connect(function(snapshot)
+        renderSnapshot(snapshot)
+    end)
+
+    ReplicateTurn.OnClientEvent:Connect(function(userId, segment)
+        onReplicateTurn(userId, segment)
+    end)
+
+    print("[EnemyInterpolation] Initialized")
+end
+
+function ensureEnemyData(userId, colorIndex)
+    local data = enemyData[userId]
+    if data then return data end
+
+    local bike = Instance.new("Part")
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
+    bike.Size = Constants.BIKE_SIZE
+    bike.Parent = Workspace
+
+    local activeTrail = Instance.new("Part")
+    activeTrail.Anchored = true
+    activeTrail.CanCollide = false
+    activeTrail.Material = Constants.TRAIL_MATERIAL
+    activeTrail.Color = Constants.COLORS[colorIndex] or Constants.COLORS[1]
+    activeTrail.Parent = Workspace
+
+    data = {
+        bike = bike,
+        trails = {},
+        activeTrail = activeTrail,
+    }
+    enemyData[userId] = data
+    return data
+end
+
+function destroyEnemyData(userId)
+    local data = enemyData[userId]
+    if not data then return end
+    data.bike:Destroy()
+    data.activeTrail:Destroy()
+    for _, t in data.trails do
+        t:Destroy()
+    end
+    enemyData[userId] = nil
+end
+
+function onReplicateTurn(userId, segment)
+    if userId == Players.LocalPlayer.UserId then return end
+    local data = enemyData[userId]
+    if not data then return end
+
+    local part = Instance.new("Part")
+    part.Anchored = true
+    part.CanCollide = false
+    part.Material = Constants.TRAIL_MATERIAL
+    part.Color = data.bike.Color
+    part.Parent = Workspace
+
+    local midX = (segment.startX + segment.endX) / 2
+    local midZ = (segment.startZ + segment.endZ) / 2
+    local dx = segment.endX - segment.startX
+    local dz = segment.endZ - segment.startZ
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    part.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    part.CFrame = CFrame.lookAt(
+        Vector3.new(midX, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ),
+        Vector3.new(midX + dx, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ + dz)
+    )
+    table.insert(data.trails, part)
+end
+
+function renderSnapshot(snapshot)
+    for _, ps in snapshot.p do
+        if ps.u == Players.LocalPlayer.UserId then
+            continue
+        end
+
+        local data = ensureEnemyData(ps.u, ps.c)
+
+        if not ps.a then
+            data.bike:Destroy()
+            data.activeTrail:Destroy()
+            for _, t in data.trails do
+                t:Destroy()
+            end
+            enemyData[ps.u] = nil
+            continue
+        end
+
+        data.bike.Transparency = 0
+        local pos = Vector3.new(ps.x, Constants.SPAWN_Y, ps.z)
+        local dir = Vector3.new(ps.dx, 0, ps.dz)
+        data.bike.CFrame = CFrame.lookAt(pos, pos + dir)
+
+        data.activeTrail.Transparency = 0
+        if ps.lx ~= nil and ps.lz ~= nil then
+            local midX = (ps.lx + ps.x) / 2
+            local midZ = (ps.lz + ps.z) / 2
+            local dx = ps.x - ps.lx
+            local dz = ps.z - ps.lz
+            local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+            data.activeTrail.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+            data.activeTrail.CFrame = CFrame.lookAt(
+                Vector3.new(midX, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ),
+                Vector3.new(midX + dx, Constants.TRAIL_HEIGHT / 2 - 0.5, midZ + dz)
+            )
+        end
+    end
+
+    for userId, data in enemyData do
+        local found = false
+        for _, ps in snapshot.p do
+            if ps.u == userId then
+                found = true
+                break
+            end
+        end
+        if not found then
+            destroyEnemyData(userId)
+        end
+    end
+end
+
+return EnemyInterpolation]]></ProtectedString>
+						<string name="ScriptGuid">{14A5F95D-BF6B-4194-A810-100F390C5C02}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">EnemyInterpolation</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000253f</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="24">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[--[[
+    LightbikeController.luau
+    ========================
+    Core client-side bike controller.
+    - Replaces StarterCharacter with a Neon Part bike
+    - Grid-snapped 90 degree movement with input buffering
+    - Scriptable camera locked behind/above the bike
+    - Fires TurnEvent to server on each turn
+    - Drives LocalTrailRenderer each frame
+]]
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Workspace = game:GetService("Workspace")
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameState = require(ReplicatedStorage.Shared.GameState)
+local LocalTrailRenderer = require(script.Parent.LocalTrailRenderer)
+
+
+local LightbikeController = {}
+
+local bike: Part? = nil
+local direction: Vector3 = Constants.DIRECTIONS.NORTH
+local position: Vector3 = Vector3.new(0, Constants.SPAWN_Y, 0)
+local lastTurnPosition: Vector3 = position
+local alive: boolean = false
+local inputBuffer: { Vector3 } = {}
+local turnCooldown: number = 0
+local cameraLerpSpeed: number = 8
+local inputConnection: RBXScriptConnection? = nil
+local renderConnection: RBXScriptConnection? = nil
+local playerColor: Color3 = Constants.COLORS[1]
+
+function LightbikeController.init()
+    local player = Players.LocalPlayer
+    if not player then
+        player = Players.PlayerAdded:Wait()
+    end
+
+    player.CharacterAdded:Connect(function(char)
+        task.wait(0.1)
+        spawnBike(char)
+    end)
+
+    DeathEvent.OnClientEvent:Connect(function()
+        LightbikeController.destroy()
+    end)
+
+    playerColor = Constants.COLORS[3]
+
+    if player.Character then
+        spawnBike(player.Character)
+    end
+end
+
+function spawnBike(char: Model)
+    if bike then
+        bike:Destroy()
+        bike = nil
+    end
+    if inputConnection then
+        inputConnection:Disconnect()
+        inputConnection = nil
+    end
+    if renderConnection then
+        renderConnection:Disconnect()
+        renderConnection = nil
+    end
+    alive = true
+    direction = Constants.DIRECTIONS.NORTH
+    position = Vector3.new(0, Constants.SPAWN_Y, 0)
+    lastTurnPosition = position
+    inputBuffer = {}
+    turnCooldown = 0
+
+
+    char:SetAttribute("TronBike", true)
+    local root = char:FindFirstChild("HumanoidRootPart")
+    if not root then
+        for _, child in char:GetChildren() do
+            if child:IsA("BasePart") then
+                root = child
+                break
+            end
+        end
+    end
+    if root then
+        root.Anchored = true
+        root.Transparency = 1
+        root.CanCollide = false
+    end
+    for _, child in char:GetChildren() do
+        if child:IsA("BasePart") and child ~= root then
+            child.Transparency = 1
+        end
+    end
+
+    bike = Instance.new("Part")
+    bike.Name = "Lightbike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = playerColor
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(position, position + direction)
+    bike.Parent = Workspace
+
+    LocalTrailRenderer.clear()
+    LocalTrailRenderer.setColor(playerColor)
+    LocalTrailRenderer.init(position, direction)
+
+    local camera = Workspace.CurrentCamera
+    camera.CameraType = Enum.CameraType.Scriptable
+    local bikeCF = CFrame.lookAt(position, position + direction)
+    local camOffset = bikeCF:VectorToWorldSpace(Vector3.new(0, 8, 16))
+    camera.CFrame = CFrame.lookAt(position + camOffset, position + direction * 10 + Vector3.new(0, 2, 0))
+
+    inputConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed or not alive then return end
+        if input.KeyCode == Enum.KeyCode.A then
+            queueTurn(1)
+        elseif input.KeyCode == Enum.KeyCode.D then
+            queueTurn(-1)
+        end
+    end)
+
+    renderConnection = RunService.RenderStepped:Connect(function(dt)
+        if not alive or not bike then return end
+        tickBike(dt)
+
+        updateCamera(dt)
+    end)
+end
+
+function queueTurn(sign: number)
+    local newDir = CFrame.Angles(0, math.rad(sign * Constants.TURN_ANGLE), 0) * direction
+    newDir = Vector3.new(math.round(newDir.X), 0, math.round(newDir.Z))
+    table.insert(inputBuffer, newDir)
+end
+
+function tickBike(dt: number)
+    turnCooldown = turnCooldown - dt
+
+    local moveAmount = Constants.BIKE_SPEED * dt
+    position = position + direction * moveAmount
+
+    if #inputBuffer > 0 then
+        if Constants.GRID_SIZE > 0 then
+            local onCrossAxis = direction.X ~= 0 and position.Z or position.X
+            local aligned = math.abs(math.round(onCrossAxis / Constants.GRID_SIZE) * Constants.GRID_SIZE - onCrossAxis) < moveAmount * 1.5
+            if aligned then
+                local newDir = inputBuffer[1]
+                turnComplete(newDir)
+                table.remove(inputBuffer, 1)
+            end
+        else
+            local newDir = inputBuffer[1]
+            turnComplete(newDir)
+            table.remove(inputBuffer, 1)
+        end
+    end
+
+    if turnCooldown <= 0 and #inputBuffer > 0 then
+        if not positionSnapping() then
+            turnComplete(inputBuffer[1])
+            table.remove(inputBuffer, 1)
+        end
+    end
+
+    bike.CFrame = CFrame.lookAt(position, position + direction)
+    LocalTrailRenderer.update(position, lastTurnPosition)
+end
+
+function positionSnapping(): boolean
+    if Constants.GRID_SIZE <= 0 then return false end
+    if direction.X ~= 0 then
+        local snapZ = math.round(position.Z / Constants.GRID_SIZE) * Constants.GRID_SIZE
+        return math.abs(position.Z - snapZ) > 0.1
+    else
+        local snapX = math.round(position.X / Constants.GRID_SIZE) * Constants.GRID_SIZE
+        return math.abs(position.X - snapX) > 0.1
+    end
+end
+
+function turnComplete(newDir: Vector3)
+    LocalTrailRenderer.finalizeSegment(lastTurnPosition, position)
+    direction = newDir
+    lastTurnPosition = position
+    turnCooldown = 0.05
+    TurnEvent:FireServer(lastTurnPosition, direction, os.clock())
+end
+
+function updateCamera(dt: number)
+    local camera = Workspace.CurrentCamera
+    local bikeCF = CFrame.lookAt(position, position + direction)
+    local offset = bikeCF:VectorToWorldSpace(Vector3.new(0, 8, 16))
+    local targetPos = position + offset
+    local targetLook = position + direction * 10 + Vector3.new(0, 2, 0)
+    local targetCF = CFrame.lookAt(targetPos, targetLook)
+    local smoothFactor = 1 - math.exp(-cameraLerpSpeed * dt)
+    camera.CFrame = targetCF
+    camera.FieldOfView = 90 + (Constants.BIKE_SPEED / 10)
+end
+
+function LightbikeController.destroy()
+    if bike then
+        bike:Destroy()
+        bike = nil
+    end
+    LocalTrailRenderer.clear()
+    alive = false
+end
+
+return LightbikeController
+]]></ProtectedString>
+						<string name="ScriptGuid">{F835D359-BA54-45A2-9CBA-454AF813E6D9}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">LightbikeController</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002540</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="25">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local LocalTrailRenderer = {}
+local activePart = nil
+local color = Constants.COLORS[1]
+
+local function makePart()
+    local p = Instance.new("Part")
+    p.Anchored = true
+    p.CanCollide = false
+    p.Material = Constants.TRAIL_MATERIAL
+    p.Color = color
+    p.Parent = Workspace
+    return p
+end
+
+function LocalTrailRenderer.init(initialPos: Vector3, initialDir: Vector3)
+    if activePart then
+        activePart:Destroy()
+    end
+    activePart = makePart()
+    local endPos = initialPos + initialDir * Constants.TRAIL_WIDTH
+    local mid = (initialPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - initialPos.X
+    local dz = endPos.Z - initialPos.Z
+    activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, Constants.TRAIL_WIDTH)
+    activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.update(currentPos: Vector3, lastTurnPos: Vector3)
+    if not activePart then return end
+    local startPos = lastTurnPos
+    local endPos = currentPos
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.finalizeSegment(startPos: Vector3, endPos: Vector3)
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+    local seg = makePart()
+    seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+function LocalTrailRenderer.setColor(c: Color3)
+    color = c
+    if activePart then
+        activePart.Color = c
+    end
+end
+
+function LocalTrailRenderer.clear()
+    if activePart then
+        activePart:Destroy()
+        activePart = nil
+    end
+end
+
+return LocalTrailRenderer
+]]></ProtectedString>
+						<string name="ScriptGuid">{0D8B22F0-6449-4282-AAC0-603B61676D39}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">LocalTrailRenderer</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002541</UniqueId>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="StarterCharacterScripts" referent="RBX7114AB74E383475AB9CD9298F0F81247">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterCharacterScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002549</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StarterPack" referent="RBXC5AC0AAF00734B03AE4F1B6607D6A0E2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterPack</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024d0</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterGui" referent="RBX6DDC9435C9F542FE8F26E708DFE61869">
+		<Properties>
+			<token name="ClipsDescendantsSupportsRotation">0</token>
+			<bool name="ResetPlayerGuiOnSpawn">true</bool>
+			<token name="RtlTextSupport">0</token>
+			<token name="ScreenOrientation">2</token>
+			<bool name="ShowDevelopmentGui">true</bool>
+			<Ref name="StudioDefaultStyleSheet">null</Ref>
+			<Ref name="StudioInsertWidgetLayerCollectorAutoLinkStyleSheet">null</Ref>
+			<token name="VirtualCursorMode">0</token>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterGui</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024d1</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LocalizationService" referent="RBX2685AAD3C8114964912C58D3E75AD5DF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LocalizationService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024d3</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TeleportService" referent="RBX695A6A7C9AFC4D7EBB156BBD348E9A1C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Teleport Service</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024d7</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PhysicsService" referent="RBX93ED3D9A11754A5CB4B13654041758FA">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024d9</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="InsertService" referent="RBXC4FA347A5D744C8CB080FE8F575EA36B">
+		<Properties>
+			<bool name="AllowInsertFreeModels">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">InsertService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024dc</UniqueId>
+		</Properties>
+		<Item class="StringValue" referent="RBX5615B70E26D94362A6FBD13EC7CDFBBA">
+			<Properties>
+				<string name="Value">{A4E3B5FB-52DF-4B3C-A197-765FA7B96D0F}</string>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">InsertionHash</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000a153</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="GamePassService" referent="RBX7DDC16A833F341609309EA04D8C3DE88">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">GamePassService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024dd</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Debris" referent="RBX25A4F01C5C99460CB46F0D2B5D6811B4">
+		<Properties>
+			<int name="MaxItems">1000</int>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Debris</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024de</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CookiesService" referent="RBXF51992E53D7142519387209707D8EB47">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CookiesService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024df</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Selection" referent="RBXF9144527B9F2471EBED18986881494C9">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Selection</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e0</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VRService" referent="RBX33D4FD4C48AB497DB19321CB4EBFB5D3">
+		<Properties>
+			<token name="AutomaticScaling">0</token>
+			<bool name="AvatarGestures">false</bool>
+			<token name="ControllerModels">1</token>
+			<bool name="FadeOutViewOnCollision">true</bool>
+			<token name="LaserPointer">1</token>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VRService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e4</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ContextActionService" referent="RBX0D29D4F03D9240D09158CC740549AC46">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ContextActionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e5</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ScriptService" referent="RBX2CCBFE65B5484A83BFA9CC5C4BFD613F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e6</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AssetService" referent="RBX4B0A9893F35B4C89BB8443FF3766562E">
+		<Properties>
+			<bool name="AllowInsertFreeAssets">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AssetService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e7</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TouchInputService" referent="RBX551124D4136B4FB8B054036B9119F9BD">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TouchInputService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024e9</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AvatarSettings" referent="RBX41776F8C9B8548AFA4B01915E23EEF91">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AvatarSettings</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024ef</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Packages" referent="RBXFC9FFB2409B249E290CDFB0E386C6265">
+		<Properties>
+			<bool name="IsDehydrated">false</bool>
+			<int name="ShellPackagesCount">0</int>
+			<int name="SkippedInstancesCount">0</int>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Packages</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024f3</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="GuidRegistryService" referent="RBX4C5CD4F7057A468FA04CCB9A659A5F86">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">GuidRegistryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024f4</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LuaWebService" referent="RBX8AC16038B1384E44B83852EFD8FA32B2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LuaWebService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024fb</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProcessInstancePhysicsService" referent="RBXA1F727A28E4B4178A3F7B4F79F537C3D">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ProcessInstancePhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024fc</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedStorage" referent="1">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024fd</UniqueId>
+		</Properties>
+		<Item class="RemoteEvent" referent="2">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">DeathEvent</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002520</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="RemoteEvent" referent="3">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">ReplicateTurn</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002521</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="Folder" referent="4">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Shared</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002522</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="5">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[return {
+    BIKE_SPEED       = 60,
+    BIKE_SIZE        = Vector3.new(2, 1, 4),
+    TURN_ANGLE       = 90,
+    GRID_SIZE        = 2,
+    ARENA_SIZE       = 4096,
+    TICK_RATE        = 30,
+    TICK_INTERVAL    = 1 / 30,
+    TRAIL_HEIGHT     = 3,
+    TRAIL_WIDTH      = 0.5,
+    TRAIL_FADE_TIME  = 10,
+    TRAIL_MATERIAL   = Enum.Material.SmoothPlastic,
+    BIKE_MATERIAL    = Enum.Material.SmoothPlastic,
+    MAX_TURN_RATE    = 8,
+    INTERP_DELAY     = 0.1,
+    AI_SPEED         = 60,
+    AI_BOT_COUNT     = 3,
+    AI_DIFFICULTY = {
+        EASY = {
+            lookaheadStuds = 30,
+            reactionDelayTicks = 5,
+            mistakeChance = 0.3,
+            floodFillEnabled = false,
+            floodFillInterval = 0,
+            aggressionWeight = 0,
+            minSegmentLength = 20,
+        },
+        MEDIUM = {
+            lookaheadStuds = 60,
+            reactionDelayTicks = 1,
+            mistakeChance = 0.1,
+            floodFillEnabled = true,
+            floodFillInterval = 15,
+            aggressionWeight = 0.3,
+            minSegmentLength = 10,
+        },
+        HARD = {
+            lookaheadStuds = 100,
+            reactionDelayTicks = 0,
+            mistakeChance = 0,
+            floodFillEnabled = true,
+            floodFillInterval = 8,
+            aggressionWeight = 0.6,
+            minSegmentLength = 6,
+        },
+    },
+    COLORS = {
+        Color3.fromRGB(0, 255, 255),
+        Color3.fromRGB(255, 128, 0),
+        Color3.fromRGB(0, 128, 255),
+        Color3.fromRGB(0, 255, 0),
+        Color3.fromRGB(255, 0, 255),
+    },
+    DIRECTIONS = {
+        EAST  = Vector3.new(1, 0, 0),
+        WEST  = Vector3.new(-1, 0, 0),
+        SOUTH = Vector3.new(0, 0, 1),
+        NORTH = Vector3.new(0, 0, -1),
+    },
+    SPAWN_Y          = 1,
+}]]></ProtectedString>
+					<string name="ScriptGuid">{44E84FC5-6B97-4971-9E08-BF213BC90B47}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">Constants</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002523</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="6">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local Constants = require(script.Parent.Constants)
+
+local GameState = {}
+
+function GameState.isHorizontal(seg)
+    return seg.startZ == seg.endZ
+end
+
+function GameState.isVertical(seg)
+    return seg.startX == seg.endX
+end
+
+function GameState.segmentsIntersect(segA, segB)
+    local aHorizontal = GameState.isHorizontal(segA)
+    local bHorizontal = GameState.isHorizontal(segB)
+
+    if aHorizontal ~= bHorizontal then
+        local hSeg, vSeg
+        if aHorizontal then
+            hSeg = segA
+            vSeg = segB
+        else
+            hSeg = segB
+            vSeg = segA
+        end
+
+        local hMinX = math.min(hSeg.startX, hSeg.endX)
+        local hMaxX = math.max(hSeg.startX, hSeg.endX)
+        local vMinZ = math.min(vSeg.startZ, vSeg.endZ)
+        local vMaxZ = math.max(vSeg.startZ, vSeg.endZ)
+
+        return vSeg.startX >= hMinX and vSeg.startX <= hMaxX
+           and hSeg.startZ >= vMinZ and hSeg.startZ <= vMaxZ
+    else
+        if aHorizontal then
+            if segA.startZ ~= segB.startZ then
+                return false
+            end
+            local aMinX = math.min(segA.startX, segA.endX)
+            local aMaxX = math.max(segA.startX, segA.endX)
+            local bMinX = math.min(segB.startX, segB.endX)
+            local bMaxX = math.max(segB.startX, segB.endX)
+            return aMinX <= bMaxX and bMinX <= aMaxX
+        else
+            if segA.startX ~= segB.startX then
+                return false
+            end
+            local aMinZ = math.min(segA.startZ, segA.endZ)
+            local aMaxZ = math.max(segA.startZ, segA.endZ)
+            local bMinZ = math.min(segB.startZ, segB.endZ)
+            local bMaxZ = math.max(segB.startZ, segB.endZ)
+            return aMinZ <= bMaxZ and bMinZ <= aMaxZ
+        end
+    end
+end
+
+function GameState.pointHitsSegment(x, z, seg)
+    if GameState.isHorizontal(seg) then
+        if z ~= seg.startZ then return false end
+        local minX = math.min(seg.startX, seg.endX)
+        local maxX = math.max(seg.startX, seg.endX)
+        return x >= minX and x <= maxX
+    else
+        if x ~= seg.startX then return false end
+        local minZ = math.min(seg.startZ, seg.endZ)
+        local maxZ = math.max(seg.startZ, seg.endZ)
+        return z >= minZ and z <= maxZ
+    end
+end
+
+function GameState.isInsideArena(x, z)
+    local half = Constants.ARENA_SIZE / 2
+    return x >= -half and x <= half and z >= -half and z <= half
+end
+
+function GameState.makeSegment(startX, startZ, endX, endZ)
+    return {
+        startX = startX,
+        startZ = startZ,
+        endX = endX,
+        endZ = endZ,
+    }
+end
+
+function GameState.getActiveSegment(lastTurnPos, currentPos)
+    return GameState.makeSegment(
+        lastTurnPos.X, lastTurnPos.Z,
+        currentPos.X, currentPos.Z
+    )
+end
+
+return GameState]]></ProtectedString>
+					<string name="ScriptGuid">{F9760238-2655-4B3C-9F0D-CB19E6928682}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">GameState</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002524</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="7">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[--[[
+    Types.luau
+    ==========
+    Luau type definitions shared between client and server.
+    These keep the data structures consistent across the network boundary.
+]]
+
+-- A single finalized trail segment stored as coordinate pairs.
+-- Movement is axis-aligned, so each segment is either horizontal (X-axis) or vertical (Z-axis).
+-- startY/endY are omitted because Y is constant (SPAWN_Y).
+export type TrailSegment = {
+    startX: number,
+    startZ: number,
+    endX: number,
+    endZ: number,
+}
+
+-- Per-player state tracked on the server.
+-- The server owns this table; clients receive snapshots of it.
+export type PlayerState = {
+    player: Player,
+    bikePart: Part?,
+    direction: Vector3,
+    position: Vector3,
+    lastTurnPosition: Vector3,
+    lastTurnTime: number,
+    trailHistory: { TrailSegment },
+    alive: boolean,
+    color: Color3,
+    colorIndex: number,
+}
+
+-- A single player's data within a state snapshot, serialized for network transit.
+-- Vector3s are broken into components to keep the payload small.
+export type PlayerSnapshot = {
+    userId: number,
+    posX: number,
+    posZ: number,
+    dirX: number,
+    dirZ: number,
+    alive: boolean,
+    colorIndex: number,
+    trail: { TrailSegment },
+}
+
+-- The full game state snapshot broadcast to all clients every tick via UnreliableRemoteEvent.
+export type GameStateSnapshot = {
+    tick: number,
+    players: { PlayerSnapshot },
+}
+
+-- Input buffer entry for queued turns (client-side grid snapping).
+export type QueuedTurn = {
+    newDirection: Vector3,
+    timestamp: number,
+}
+
+return nil
+]]></ProtectedString>
+					<string name="ScriptGuid">{09C6AFF5-937C-4DE8-848B-92911D12BCF8}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">Types</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002525</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="UnreliableRemoteEvent" referent="8">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StateUpdate</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000252b</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="RemoteEvent" referent="9">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">TurnEvent</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000252c</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="ServerScriptService" referent="10">
+		<Properties>
+			<bool name="LoadStringEnabled">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServerScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024fe</UniqueId>
+		</Properties>
+		<Item class="Script" referent="11">
+			<Properties>
+				<ProtectedString name="Source"><![CDATA[--[[
+    init.server.luau
+    ================
+    Server bootstrapper. Requires and initializes all server modules.
+    No game logic lives here - only the load order.
+]]
+
+local Constants = require(game.ReplicatedStorage.Shared.Constants)
+local GameState = require(game.ReplicatedStorage.Shared.GameState)
+
+local LightbikeServer = require(script.LightbikeServer)
+local GameStateManager = require(script.GameStateManager)
+local TrailManager = require(script.TrailManager)
+local CollisionService = require(script.CollisionService)
+local MatchManager = require(script.MatchManager)
+local AIBot = require(script.AIBot)
+
+print("[Server] Bootstrapping Tron Lightbike server modules...")
+print("[Server] Constants loaded: BIKE_SPEED =", Constants.BIKE_SPEED, "| TICK_RATE =", Constants.TICK_RATE)
+print("[Server] GameState helpers loaded: segmentsIntersect, pointHitsSegment, isInsideArena")
+
+-- Initialize modules (stubs for now - they just print in Phase A)
+TrailManager.init()
+GameStateManager.init()
+LightbikeServer.init()
+CollisionService.init()
+MatchManager.init()
+AIBot.init()
+
+print("[Server] All server modules initialized successfully.")
+]]></ProtectedString>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<token name="RunContext">0</token>
+				<string name="ScriptGuid">{B3DAFEAF-181E-4A0C-9E32-36346B1F6129}</string>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Server</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000252d</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="12">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
+local GameStateManager = require(script.Parent.GameStateManager)
+local TrailManager = require(script.Parent.TrailManager)
+
+local AIBot = {}
+AIBot.__index = AIBot
+
+local nextBotId = 0
+
+local function rotateLeft(dir)
+    return Vector3.new(dir.Z, 0, -dir.X)
+end
+
+local function rotateRight(dir)
+    return Vector3.new(-dir.Z, 0, dir.X)
+end
+
+local function segmentsEqual(a, b)
+    return a.startX == b.startX and a.startZ == b.startZ
+       and a.endX == b.endX and a.endZ == b.endZ
+end
+
+local function getAllTrailSegments(playerStates, excludePlayer)
+    local segments = {}
+    for player, state in playerStates do
+        for _, seg in state.trailHistory do
+            table.insert(segments, seg)
+        end
+        if state.alive and player ~= excludePlayer then
+            table.insert(segments, GameStateHelpers.getActiveSegment(state.lastTurnPosition, state.position))
+        end
+    end
+    return segments
+end
+
+function AIBot.new(difficulty, spawnPos, initialDir, colorIndex)
+    nextBotId = nextBotId + 1
+    local self = setmetatable({}, AIBot)
+    self.botId = nextBotId
+    self.profile = Constants.AI_DIFFICULTY[difficulty] or Constants.AI_DIFFICULTY.EASY
+    self.difficulty = difficulty
+    self.reactionCounter = 0
+    self.ticksSinceFloodFill = 0
+    self.tickAcc = 0
+    self.spawnPos = spawnPos
+    self.initialDir = initialDir
+    self.colorIndex = colorIndex
+    self.connection = nil
+    self.state = nil
+    self.cleanedUp = false
+    return self
+end
+
+function AIBot:start()
+    local fakePlayer = {
+        UserId = 10000 + self.botId,
+        Name = "AI_Bot_" .. self.botId,
+    }
+
+    local color = Constants.COLORS[self.colorIndex]
+    local spawnPos = self.spawnPos
+
+    local bike = Instance.new("Part")
+    bike.Name = "AIBot_" .. self.botId .. "_Bike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = color
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + self.initialDir)
+    bike.Parent = Workspace
+
+    self.state = {
+        player = fakePlayer,
+        bikePart = bike,
+        direction = self.initialDir,
+        position = spawnPos,
+        lastTurnPosition = spawnPos,
+        lastTurnTime = os.clock(),
+        trailHistory = {},
+        alive = true,
+        color = color,
+        colorIndex = self.colorIndex,
+        isAI = true,
+    }
+
+    local playerStates = GameStateManager.getPlayerStates()
+    playerStates[fakePlayer] = self.state
+    TrailManager.addPlayer(fakePlayer, color)
+
+    self.connection = RunService.Heartbeat:Connect(function(dt)
+        self:tick(dt)
+    end)
+
+    print("[AIBot] Bot " .. self.botId .. " (" .. self.difficulty .. ") spawned at", spawnPos)
+end
+
+function AIBot:tick(dt)
+    if self.cleanedUp then return end
+    if not self.state then return end
+    if not self.state.alive then
+        self:cleanup()
+        return
+    end
+
+    self.tickAcc = self.tickAcc + dt
+    while self.tickAcc >= Constants.TICK_INTERVAL do
+        self.tickAcc = self.tickAcc - Constants.TICK_INTERVAL
+
+        self.state.position = self.state.position + self.state.direction * Constants.BIKE_SPEED * Constants.TICK_INTERVAL
+        if self.state.bikePart then
+            self.state.bikePart.CFrame = CFrame.lookAt(self.state.position, self.state.position + self.state.direction)
+        end
+        TrailManager.updateActiveSegment(self.state.player, self.state.position, self.state.lastTurnPosition)
+
+        self:think()
+    end
+end
+
+function AIBot:think()
+    if self.reactionCounter > 0 then
+        self.reactionCounter = self.reactionCounter - 1
+        return
+    end
+
+    local playerStates = GameStateManager.getPlayerStates()
+    local allSegments = getAllTrailSegments(playerStates, self.state.player)
+
+    local directions = {
+        { dir = self.state.direction, name = "straight" },
+        { dir = rotateLeft(self.state.direction), name = "left" },
+        { dir = rotateRight(self.state.direction), name = "right" },
+    }
+
+    local safeDirections = {}
+    for _, d in directions do
+        if self:isDirectionSafe(d.dir, allSegments, self.profile.lookaheadStuds) then
+            table.insert(safeDirections, d)
+        end
+    end
+
+    if #safeDirections == 0 then
+        self.reactionCounter = self.profile.reactionDelayTicks
+        return
+    end
+
+    if #safeDirections == 1 then
+        self:executeTurn(safeDirections[1].dir)
+        self.reactionCounter = self.profile.reactionDelayTicks
+        return
+    end
+
+    if math.random() < self.profile.mistakeChance then
+        local randomChoice = safeDirections[math.random(#safeDirections)]
+        self:executeTurn(randomChoice.dir)
+        self.reactionCounter = self.profile.reactionDelayTicks
+        return
+    end
+
+    local useFloodFill = self.profile.floodFillEnabled
+        and (self.ticksSinceFloodFill >= self.profile.floodFillInterval)
+
+    local bestDir = nil
+    local bestScore = -math.huge
+
+    for _, d in safeDirections do
+        local score = self:scoreDirection(d.dir, allSegments, playerStates, useFloodFill)
+        if score > bestScore then
+            bestScore = score
+            bestDir = d.dir
+        end
+    end
+
+    if useFloodFill then
+        self.ticksSinceFloodFill = 0
+    else
+        self.ticksSinceFloodFill = self.ticksSinceFloodFill + 1
+    end
+
+    if bestDir then
+        self:executeTurn(bestDir)
+    end
+
+    self.reactionCounter = self.profile.reactionDelayTicks
+end
+
+function AIBot:isDirectionSafe(direction, allSegments, lookaheadStuds)
+    local pos = self.state.position
+    local endX = pos.X + direction.X * lookaheadStuds
+    local endZ = pos.Z + direction.Z * lookaheadStuds
+
+    if not GameStateHelpers.isInsideArena(endX, endZ) then
+        return false
+    end
+
+    local projected = GameStateHelpers.makeSegment(pos.X, pos.Z, endX, endZ)
+
+    for _, seg in allSegments do
+        if GameStateHelpers.segmentsIntersect(projected, seg) then
+            return false
+        end
+    end
+
+    return true
+end
+
+function AIBot:scoreDirection(direction, allSegments, playerStates, useFloodFill)
+    local pos = self.state.position
+    local candidateX = pos.X + direction.X * Constants.GRID_SIZE
+    local candidateZ = pos.Z + direction.Z * Constants.GRID_SIZE
+
+    local probeDirections = {
+        direction,
+        rotateLeft(direction),
+        rotateRight(direction),
+    }
+
+    local totalDistance = 0
+    local maxProbe = self.profile.lookaheadStuds * 2
+
+    for _, probeDir in probeDirections do
+        local dist = self:distanceToObstacle(candidateX, candidateZ, probeDir, allSegments, maxProbe)
+        totalDistance = totalDistance + dist
+    end
+
+    local score = totalDistance
+
+    if self.profile.aggressionWeight > 0 then
+        local strategicScore = self:strategicScore(candidateX, candidateZ, direction, playerStates)
+        score = score * (1 - self.profile.aggressionWeight) + strategicScore * self.profile.aggressionWeight
+    end
+
+    if useFloodFill then
+        local floodScore = self:floodFillScore(candidateX, candidateZ, allSegments)
+        if floodScore > 0 then
+            score = score * 0.3 + floodScore * 0.7
+        end
+    end
+
+    return score
+end
+
+function AIBot:distanceToObstacle(startX, startZ, direction, allSegments, maxDist)
+    local probeEndX = startX + direction.X * maxDist
+    local probeEndZ = startZ + direction.Z * maxDist
+    local probe = GameStateHelpers.makeSegment(startX, startZ, probeEndX, probeEndZ)
+    local minDist = maxDist
+
+    for _, seg in allSegments do
+        if GameStateHelpers.segmentsIntersect(probe, seg) then
+            if GameStateHelpers.isHorizontal(probe) then
+                if GameStateHelpers.isVertical(seg) then
+                    local dist = math.abs(seg.startX - startX)
+                    if dist < minDist then minDist = dist end
+                else
+                    local segMinX = math.min(seg.startX, seg.endX)
+                    local overlapStart = math.max(segMinX, startX)
+                    local dist = math.max(0, overlapStart - startX)
+                    if dist < minDist then minDist = dist end
+                end
+            else
+                if GameStateHelpers.isHorizontal(seg) then
+                    local dist = math.abs(seg.startZ - startZ)
+                    if dist < minDist then minDist = dist end
+                else
+                    local segMinZ = math.min(seg.startZ, seg.endZ)
+                    local overlapStart = math.max(segMinZ, startZ)
+                    local dist = math.max(0, overlapStart - startZ)
+                    if dist < minDist then minDist = dist end
+                end
+            end
+        end
+    end
+
+    local half = Constants.ARENA_SIZE / 2
+    if direction.X > 0 then
+        minDist = math.min(minDist, half - startX)
+    elseif direction.X < 0 then
+        minDist = math.min(minDist, startX + half)
+    end
+    if direction.Z > 0 then
+        minDist = math.min(minDist, half - startZ)
+    elseif direction.Z < 0 then
+        minDist = math.min(minDist, startZ + half)
+    end
+
+    return minDist
+end
+
+function AIBot:strategicScore(candidateX, candidateZ, direction, playerStates)
+    local score = 0
+    local predictTicks = 10
+
+    for _, state in playerStates do
+        if state.isAI then continue end
+        if not state.alive then continue end
+
+        local predictedX = state.position.X + state.direction.X * Constants.BIKE_SPEED * Constants.TICK_INTERVAL * predictTicks
+        local predictedZ = state.position.Z + state.direction.Z * Constants.BIKE_SPEED * Constants.TICK_INTERVAL * predictTicks
+
+        local distToPredicted = math.sqrt((candidateX - predictedX)^2 + (candidateZ - predictedZ)^2)
+        local currentDist = math.sqrt((self.state.position.X - predictedX)^2 + (self.state.position.Z - predictedZ)^2)
+
+        if distToPredicted < currentDist then
+            score = score + (currentDist - distToPredicted)
+        end
+    end
+
+    return score
+end
+
+function AIBot:floodFillScore(startX, startZ, allSegments)
+    local cellSize = 64
+    local cellBudget = 300
+
+    local function cellKey(cx, cz)
+        return cx .. "," .. cz
+    end
+
+    local function isCellFree(cx, cz)
+        local worldX = cx * cellSize + cellSize / 2
+        local worldZ = cz * cellSize + cellSize / 2
+        if not GameStateHelpers.isInsideArena(worldX, worldZ) then
+            return false
+        end
+        for _, seg in allSegments do
+            if GameStateHelpers.pointHitsSegment(worldX, worldZ, seg) then
+                return false
+            end
+        end
+        return true
+    end
+
+    local startCX = math.floor(startX / cellSize)
+    local startCZ = math.floor(startZ / cellSize)
+
+    local visited = {}
+    local queue = { { startCX, startCZ } }
+    local queueIdx = 1
+    local count = 0
+
+    while queueIdx <= #queue and count < cellBudget do
+        local cell = queue[queueIdx]
+        queueIdx = queueIdx + 1
+        local key = cellKey(cell[1], cell[2])
+        if not visited[key] then
+            visited[key] = true
+            if isCellFree(cell[1], cell[2]) then
+                count = count + 1
+                local neighbors = {
+                    { cell[1] + 1, cell[2] },
+                    { cell[1] - 1, cell[2] },
+                    { cell[1], cell[2] + 1 },
+                    { cell[1], cell[2] - 1 },
+                }
+                for _, n in neighbors do
+                    table.insert(queue, n)
+                end
+            end
+        end
+    end
+
+    return count
+end
+
+function AIBot:executeTurn(direction)
+    if direction == self.state.direction then
+        return
+    end
+
+    local currentDist = (self.state.position - self.state.lastTurnPosition).Magnitude
+    if currentDist < self.profile.minSegmentLength then
+        return
+    end
+
+    GameStateManager.applyTurn(self.state.player, self.state.position, direction)
+end
+
+function AIBot:cleanup()
+    if self.cleanedUp then return end
+    self.cleanedUp = true
+    if self.connection then
+        self.connection:Disconnect()
+        self.connection = nil
+    end
+    if self.state then
+        local playerStates = GameStateManager.getPlayerStates()
+        if playerStates[self.state.player] then
+            playerStates[self.state.player] = nil
+        end
+        TrailManager.removePlayer(self.state.player)
+        self.state = nil
+    end
+    print("[AIBot] Bot " .. self.botId .. " cleaned up")
+end
+
+function AIBot.init()
+    local playerCount = #Players:GetPlayers()
+    local botCount = math.max(Constants.AI_BOT_COUNT - playerCount, 0)
+    if botCount <= 0 then
+        botCount = 1
+    end
+
+    local spawnConfigs = {
+        { pos = Vector3.new(-200, Constants.SPAWN_Y, -200), dir = Constants.DIRECTIONS.EAST,  color = 2 },
+        { pos = Vector3.new(200, Constants.SPAWN_Y, 200),   dir = Constants.DIRECTIONS.WEST,  color = 5 },
+        { pos = Vector3.new(-200, Constants.SPAWN_Y, 200),  dir = Constants.DIRECTIONS.SOUTH, color = 4 },
+    }
+
+    local difficulties = { "EASY", "MEDIUM", "HARD" }
+
+    for i = 1, math.min(botCount, #spawnConfigs) do
+        local cfg = spawnConfigs[i]
+        local diff = difficulties[i] or "EASY"
+        local bot = AIBot.new(diff, cfg.pos, cfg.dir, cfg.color)
+        bot:start()
+    end
+
+    print("[AIBot] Initialized " .. math.min(botCount, #spawnConfigs) .. " bots")
+end
+
+return AIBot]]></ProtectedString>
+					<string name="ScriptGuid">{983EEB4E-7C68-492B-9B4A-E36E137C1D27}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">AIBot</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000252e</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="13">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
+
+local CollisionService = {}
+
+function CollisionService.init()
+    print("[CollisionService] Initialized")
+end
+
+function CollisionService.checkAll(playerStates)
+    local dead = {}
+    for player, state in pairs(playerStates) do
+        if not state.alive then continue end
+        if dead[player] then continue end
+
+        if not GameStateHelpers.isInsideArena(state.position.X, state.position.Z) then
+            dead[player] = true
+        end
+
+        local active = GameStateHelpers.getActiveSegment(state.lastTurnPosition, state.position)
+
+        for i = 1, #state.trailHistory - 1 do
+            if GameStateHelpers.segmentsIntersect(active, state.trailHistory[i]) then
+                dead[player] = true
+                break
+            end
+        end
+
+        for otherPlayer, otherState in pairs(playerStates) do
+            if otherPlayer == player then continue end
+
+            for _, seg in pairs(otherState.trailHistory) do
+                if GameStateHelpers.segmentsIntersect(active, seg) then
+                    dead[player] = true
+                    break
+                end
+            end
+
+            if otherState.alive then
+                local otherActive = GameStateHelpers.getActiveSegment(otherState.lastTurnPosition, otherState.position)
+                local sameAxis = (GameStateHelpers.isHorizontal(active) and GameStateHelpers.isHorizontal(otherActive) and active.startZ == otherActive.startZ)
+                    or (GameStateHelpers.isVertical(active) and GameStateHelpers.isVertical(otherActive) and active.startX == otherActive.startX)
+                if sameAxis and GameStateHelpers.segmentsIntersect(active, otherActive) then
+                    dead[player] = true
+                    dead[otherPlayer] = true
+                end
+            end
+        end
+    end
+    return dead
+end
+
+return CollisionService
+]]></ProtectedString>
+					<string name="ScriptGuid">{49FD481D-A203-4568-9E00-72BE90318EFC}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">CollisionService</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000252f</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="14">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
+local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
+local TrailManager = require(script.Parent.TrailManager)
+local CollisionService = require(script.Parent.CollisionService)
+local MatchManager = require(script.Parent.MatchManager)
+
+local GameStateManager = {}
+
+local playerStates = {}
+local tickAccumulator = 0
+local tickNumber = 0
+
+function GameStateManager.getPlayerStates()
+    return playerStates
+end
+
+function GameStateManager.init()
+    Players.PlayerAdded:Connect(function(player)
+        createPlayerState(player)
+    end)
+    Players.PlayerRemoving:Connect(function(player)
+        removePlayerState(player)
+    end)
+    for _, player in Players:GetPlayers() do
+        createPlayerState(player)
+    end
+
+    RunService.Heartbeat:Connect(function(dt)
+        tickAccumulator = tickAccumulator + dt
+        while tickAccumulator >= Constants.TICK_INTERVAL do
+            tickAccumulator = tickAccumulator - Constants.TICK_INTERVAL
+            serverTick(Constants.TICK_INTERVAL)
+        end
+    end)
+
+    print("[GameStateManager] Initialized")
+end
+
+function createPlayerState(player)
+    local color = Constants.COLORS[3]
+    local spawnPos = Vector3.new(0, Constants.SPAWN_Y, 0)
+
+    local bike = Instance.new("Part")
+    bike.Name = player.Name .. "Bike"
+    bike.Anchored = true
+    bike.CanCollide = false
+    bike.Material = Constants.BIKE_MATERIAL
+    bike.Color = color
+    bike.Size = Constants.BIKE_SIZE
+    bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + Constants.DIRECTIONS.NORTH)
+    bike.Parent = Workspace
+
+    local state = {
+        player = player,
+        bikePart = bike,
+        direction = Constants.DIRECTIONS.NORTH,
+        position = spawnPos,
+        lastTurnPosition = spawnPos,
+        lastTurnTime = os.clock(),
+        trailHistory = {},
+        alive = true,
+        color = color,
+        colorIndex = 3,
+    }
+    playerStates[player] = state
+    TrailManager.addPlayer(player, color)
+    print("[GameStateManager] Player added:", player.Name)
+end
+
+function removePlayerState(player)
+    local state = playerStates[player]
+    if state then
+        if state.bikePart then
+            state.bikePart:Destroy()
+        end
+        TrailManager.removePlayer(player)
+        playerStates[player] = nil
+        print("[GameStateManager] Player removed:", player.Name)
+    end
+end
+
+function serverTick(dt)
+    tickNumber = tickNumber + 1
+    for _, state in playerStates do
+        if state.alive and not state.isAI then
+            state.position = state.position + state.direction * Constants.BIKE_SPEED * dt
+            if state.bikePart then
+                state.bikePart.CFrame = CFrame.lookAt(state.position, state.position + state.direction)
+            end
+            TrailManager.updateActiveSegment(state.player, state.position, state.lastTurnPosition)
+        end
+    end
+
+    local dead = CollisionService.checkAll(playerStates)
+    for player, _ in dead do
+        local state = playerStates[player]
+        if not state or not state.alive then continue end
+        state.alive = false
+        state.trailHistory = {}
+        if state.bikePart then
+            state.bikePart:Destroy()
+            state.bikePart = nil
+        end
+        TrailManager.onDeath(player, state.position, state.lastTurnPosition)
+        MatchManager.killBike(player)
+    end
+    broadcastState()
+end
+
+function broadcastState()
+    local snapshot = { t = tickNumber, p = {} }
+    for _, state in playerStates do
+        local ps = {
+            u = state.player.UserId,
+            x = state.position.X,
+            z = state.position.Z,
+            dx = state.direction.X,
+            dz = state.direction.Z,
+            a = state.alive,
+            c = state.colorIndex,
+            lx = state.lastTurnPosition.X,
+            lz = state.lastTurnPosition.Z,
+        }
+        snapshot.p[#snapshot.p + 1] = ps
+    end
+    StateUpdate:FireAllClients(snapshot)
+end
+
+function GameStateManager.applyTurn(player, turnPos, newDir)
+    local state = playerStates[player]
+    if not state or not state.alive then return end
+
+    local seg = GameStateHelpers.makeSegment(
+        state.lastTurnPosition.X, state.lastTurnPosition.Z,
+        turnPos.X, turnPos.Z
+    )
+    table.insert(state.trailHistory, seg)
+    ReplicateTurn:FireAllClients(player.UserId, seg)
+
+    TrailManager.onTurn(player, turnPos, state.lastTurnPosition)
+    state.lastTurnPosition = turnPos
+    state.position = turnPos
+    state.direction = newDir
+    state.lastTurnTime = os.clock()
+end
+
+return GameStateManager
+]]></ProtectedString>
+					<string name="ScriptGuid">{7B69B21F-3F82-4392-9299-CA7B41296A87}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">GameStateManager</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002530</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="15">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[--[[
+    LightbikeServer.luau
+    ====================
+    Server-side turn validation and replication.
+    - Listens for TurnEvent from clients
+    - Ping compensation: validates turn distance is within speed * elapsed * 1.2
+    - Rejects invalid turns (cheating, lag exploits)
+    - Calls GameStateManager.applyTurn() for valid turns (which also fires ReplicateTurn)
+]]
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
+
+local Constants = require(ReplicatedStorage.Shared.Constants)
+local GameStateManager = require(script.Parent.GameStateManager)
+
+local LightbikeServer = {}
+
+function LightbikeServer.init()
+    TurnEvent.OnServerEvent:Connect(function(player, turnPos, newDir, timestamp)
+        validateAndApplyTurn(player, turnPos, newDir, timestamp)
+    end)
+    print("[LightbikeServer] Initialized")
+end
+
+function validateAndApplyTurn(player, turnPos, newDir, timestamp)
+    local states = GameStateManager.getPlayerStates()
+    local state = states[player]
+    if not state or not state.alive then return end
+
+    local dot = state.direction.X * newDir.X + state.direction.Z * newDir.Z
+    if math.abs(dot) > 0.1 then
+        return
+    end
+
+    if math.abs(newDir.X) + math.abs(newDir.Z) ~= 1 then
+        return
+    end
+
+    local now = os.clock()
+    local elapsed = now - state.lastTurnTime
+    local maxDistance = Constants.BIKE_SPEED * math.max(elapsed, 0.016) * 1.2
+    local actualDistance = (turnPos - state.lastTurnPosition).Magnitude
+    if actualDistance > maxDistance then
+        return
+    end
+
+    GameStateManager.applyTurn(player, turnPos, newDir)
+end
+
+return LightbikeServer]]></ProtectedString>
+					<string name="ScriptGuid">{8C2A6C4F-66FB-4366-8631-A963BD27C2AB}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">LightbikeServer</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002531</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="16">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
+
+local MatchManager = {}
+
+function MatchManager.init()
+    print("[MatchManager] Initialized")
+end
+
+function MatchManager.killBike(player)
+    if typeof(player) == "Instance" then
+        DeathEvent:FireClient(player)
+    end
+end
+
+return MatchManager
+]]></ProtectedString>
+					<string name="ScriptGuid">{B6A916B5-7296-41C1-82DA-A60CF6CF54D2}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">MatchManager</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002532</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="17">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Constants = require(ReplicatedStorage.Shared.Constants)
+
+local TrailManager = {}
+
+local trailData = {}
+
+function TrailManager.init()
+    print("[TrailManager] Initialized")
+end
+
+function TrailManager.addPlayer(player, color)
+    trailData[player] = {
+        segments = {},
+        activePart = nil,
+        lastLength = 0,
+        color = color,
+    }
+end
+
+function TrailManager.removePlayer(player)
+    local data = trailData[player]
+    if data then
+        for _, part in data.segments do
+            part:Destroy()
+        end
+        if data.activePart then
+            data.activePart:Destroy()
+        end
+        trailData[player] = nil
+    end
+end
+
+local function createSegmentPart(startPos, endPos, color)
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+
+    local seg = Instance.new("Part")
+    seg.Anchored = true
+    seg.CanCollide = false
+    seg.Material = Constants.TRAIL_MATERIAL
+    seg.Color = color
+    seg.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    seg.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+    seg.Parent = Workspace
+    return seg
+end
+
+local function scheduleFade(seg, delay)
+    task.delay(delay, function()
+        if seg and seg.Parent then
+            local tween = TweenService:Create(seg, TweenInfo.new(1), { Transparency = 1 })
+            tween:Play()
+            tween.Completed:Connect(function()
+                seg:Destroy()
+            end)
+        end
+    end)
+end
+
+function TrailManager.onTurn(player, turnPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, turnPos, data.color)
+    table.insert(data.segments, seg)
+
+    scheduleFade(seg, Constants.TRAIL_FADE_TIME)
+end
+
+function TrailManager.onDeath(player, deathPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if data.activePart then
+        data.activePart:Destroy()
+        data.activePart = nil
+    end
+
+    local seg = createSegmentPart(lastTurnPos, deathPos, data.color)
+    table.insert(data.segments, seg)
+
+    for _, seg in data.segments do
+        seg:Destroy()
+    end
+    data.segments = {}
+end
+
+function TrailManager.updateActiveSegment(player, currentPos, lastTurnPos)
+    local data = trailData[player]
+    if not data then return end
+
+    if not data.activePart then
+        data.activePart = Instance.new("Part")
+        data.activePart.Anchored = true
+        data.activePart.CanCollide = false
+        data.activePart.Material = Constants.TRAIL_MATERIAL
+        data.activePart.Color = data.color
+        data.activePart.Parent = Workspace
+    end
+
+    local startPos = lastTurnPos
+    local endPos = currentPos
+    local mid = (startPos + endPos) / 2
+    mid = Vector3.new(mid.X, Constants.TRAIL_HEIGHT / 2 - 0.5, mid.Z)
+    local dx = endPos.X - startPos.X
+    local dz = endPos.Z - startPos.Z
+    local length = math.max(math.abs(dx), math.abs(dz), Constants.TRAIL_WIDTH)
+
+    data.activePart.Size = Vector3.new(Constants.TRAIL_WIDTH, Constants.TRAIL_HEIGHT, length)
+    data.activePart.CFrame = CFrame.lookAt(mid, mid + Vector3.new(dx, 0, dz))
+end
+
+return TrailManager
+]]></ProtectedString>
+					<string name="ScriptGuid">{F5DC9B9B-EB70-4E87-8900-25AC597CAF4C}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">TrailManager</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002533</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="ServerStorage" referent="RBXB61D52BB16E34718A19C94D41C2651EF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServerStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000024ff</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServiceVisibilityService" referent="RBXD274ED53CBCF4DC6BA0A10B40F8998D2">
+		<Properties>
+			<BinaryString name="HiddenServices">AAAAAA==</BinaryString>
+			<BinaryString name="VisibleServices">AAAAAA==</BinaryString>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServiceVisibilityService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002503</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="HttpService" referent="RBXA484F7098EE54249A1D44596B08660EA">
+		<Properties>
+			<bool name="HttpEnabled">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">HttpService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000251c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Lighting" referent="0">
+		<Properties>
+			<Color3 name="Ambient">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<float name="Brightness">2</float>
+			<Color3 name="ColorShift_Bottom">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<Color3 name="ColorShift_Top">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<float name="EnvironmentDiffuseScale">0</float>
+			<float name="EnvironmentSpecularScale">0</float>
+			<float name="ExposureCompensation">0</float>
+			<token name="ExtendLightRangeTo120">0</token>
+			<Color3 name="FogColor">
+				<R>0.75</R>
+				<G>0.75</G>
+				<B>0.75</B>
+			</Color3>
+			<float name="FogEnd">100000</float>
+			<float name="FogStart">0</float>
+			<float name="GeographicLatitude">41.7332993</float>
+			<bool name="GlobalShadows">true</bool>
+			<token name="LightingStyle">1</token>
+			<Color3 name="OutdoorAmbient">
+				<R>0.5</R>
+				<G>0.5</G>
+				<B>0.5</B>
+			</Color3>
+			<bool name="Outlines">false</bool>
+			<bool name="PrioritizeLightingQuality">false</bool>
+			<float name="ShadowSoftness">0.5</float>
+			<token name="Technology">1</token>
+			<string name="TimeOfDay">14:00:00</string>
+			<BinaryString name="AttributesSerialize"><![CDATA[AgAAACYAAABSQlhfTGlnaHRpbmdUZWNobm9sb2d5VW5pZmllZE1pZ3JhdGlvbgMBIAAAAFJC
+WF9PcmlnaW5hbFRlY2hub2xvZ3lPbkZpbGVMb2FkBAEAAAA=]]></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Lighting</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000251f</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VideoService" referent="RBXCBE11034B7F1479D9D152CB999B360D4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VideoService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002558</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LodDataService" referent="RBX7DE978B6C2424F1D91D7B443FA8E5AB5">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LodDataService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac00002559</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TestService" referent="RBX43456C9818D54BF8AE8DF0080DECC58E">
+		<Properties>
+			<bool name="AutoRuns">true</bool>
+			<string name="Description"></string>
+			<bool name="ExecuteWithStudioRun">false</bool>
+			<bool name="IsPhysicsEnvironmentalThrottled">true</bool>
+			<bool name="IsSleepAllowed">true</bool>
+			<int name="NumberOfPlayers">0</int>
+			<double name="SimulateSecondsLag">0</double>
+			<bool name="ThrottlePhysicsToRealtime">true</bool>
+			<double name="Timeout">10</double>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TestService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac000025a7</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="SerializationService" referent="RBX7C6F7B7843194874B42090F0FD945EBF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">SerializationService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<UniqueId name="UniqueId">2d0256b7391336c80a69beac0000278d</UniqueId>
+		</Properties>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
+	</SharedStrings>
+</roblox>
