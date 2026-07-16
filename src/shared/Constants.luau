@@ -3,7 +3,7 @@ return {
     BIKE_SIZE        = Vector3.new(2, 1, 4),
     TURN_ANGLE       = 90,
     GRID_SIZE        = 2,
-    ARENA_SIZE       = 4096,
+    ARENA_SIZE       = 2048,
     TICK_RATE        = 30,
     TICK_INTERVAL    = 1 / 30,
     TRAIL_HEIGHT     = 3,
