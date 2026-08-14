@@ -39,3 +39,16 @@ Restored all four remotes in `default.project.json`.
    `default.project.json` under `ReplicatedStorage`.
 4. If you see only a walking character on playtest, first check that the
    RemoteEvents are still in `default.project.json`.
+---
+## 2026-08-14 - Free-steering design note
+Added `FREE_STEERING.md` (project root): feasibility analysis + phased
+implementation plan for continuous/analog steering, with a recommended dual
+`CONTROL_MODE` (GRID | FREE) approach that keeps the working 90-degree grid
+game intact while free steering is developed.
+---
+## 2026-08-14 - Maps / height / jump-power-up design note
+Added `MAPS_AND_HEIGHT.md` (project root): feasibility + phased plan for
+multiple maps, elevated bridges/ramps, and jump power-ups (arc trails).
+Key note: height requires migrating collision/movement/broadcast/AI from 2D to
+2.5D/3D, which overlaps the free-steering collision rewrite. Recommend one
+arbitrary-orientation + Y-aware segment-collision rewrite to unblock both.
