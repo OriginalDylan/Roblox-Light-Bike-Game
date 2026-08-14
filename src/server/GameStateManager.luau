@@ -5,6 +5,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
 local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
 local RestartEvent = ReplicatedStorage:WaitForChild("RestartEvent")
+local SpawnSync = ReplicatedStorage:WaitForChild("SpawnSync")
+local VictoryEvent = ReplicatedStorage:WaitForChild("VictoryEvent")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
@@ -19,6 +21,7 @@ local tickAccumulator = 0
 local tickNumber = 0
 local aiBots = {}
 local aiBotModule = nil
+local matchOver = false
 
 function GameStateManager.getPlayerStates()
     return playerStates
@@ -43,6 +46,10 @@ function GameStateManager.init()
         GameStateManager.resetGame()
     end)
 
+    SpawnSync.OnServerEvent:Connect(function(player)
+        resyncPlayerToSpawn(player)
+    end)
+
     RunService.Heartbeat:Connect(function(dt)
         tickAccumulator = tickAccumulator + dt
         while tickAccumulator >= Constants.TICK_INTERVAL do
@@ -58,19 +65,13 @@ function createPlayerState(player)
     local color = Constants.COLORS[3]
     local spawnPos = Vector3.new(0, Constants.SPAWN_Y, 0)
 
-    local bike = Instance.new("Part")
-    bike.Name = player.Name .. "Bike"
-    bike.Anchored = true
-    bike.CanCollide = false
-    bike.Material = Constants.BIKE_MATERIAL
-    bike.Color = color
-    bike.Size = Constants.BIKE_SIZE
-    bike.CFrame = CFrame.lookAt(spawnPos, spawnPos + Constants.DIRECTIONS.NORTH)
-    bike.Parent = Workspace
-
+    -- NOTE: no server bike part for human players. The client renders its own
+    -- bike locally (LightbikeController) and other clients render it via
+    -- EnemyInterpolation from the broadcast snapshot. A server part here caused
+    -- double-rendering and the "phantom bike ahead" on spawn.
     local state = {
         player = player,
-        bikePart = bike,
+        bikePart = nil,
         direction = Constants.DIRECTIONS.NORTH,
         position = spawnPos,
         lastTurnPosition = spawnPos,
@@ -98,11 +99,9 @@ function removePlayerState(player)
 end
 
 function spawnAIBots(AIBot)
-    local playerCount = #Players:GetPlayers()
-    local botCount = math.max(Constants.AI_BOT_COUNT - playerCount, 0)
-    if botCount <= 0 then
-        botCount = 1
-    end
+    -- Always spawn the configured number of bots, independent of current player
+    -- count, so the field is consistent on initial boot and after Play Again.
+    local botCount = Constants.AI_BOT_COUNT
 
     local spawnConfigs = {
         { pos = Vector3.new(-200, Constants.SPAWN_Y, -200), dir = Constants.DIRECTIONS.EAST,  color = 2 },
@@ -123,7 +122,56 @@ function spawnAIBots(AIBot)
     print("[GameStateManager] Spawned " .. #aiBots .. " AI bots")
 end
 
+
+function resyncPlayerToSpawn(player)
+    local state = playerStates[player]
+    if not state then return end
+
+    -- Snap the server-side authority back to spawn so it matches the client
+    -- predicted position (the client fires SpawnSync as soon as its bike spawns,
+    -- before it has moved). Without this the server gets a head start and becomes
+    -- the "phantom" bike ahead that killed players at the wall before their own bike.
+    state.position = Vector3.new(0, Constants.SPAWN_Y, 0)
+    state.lastTurnPosition = state.position
+    state.direction = Constants.DIRECTIONS.NORTH
+    state.lastTurnTime = os.clock()
+    state.trailHistory = {}
+    state.alive = true
+    TrailManager.removePlayer(player)
+    TrailManager.addPlayer(player, state.color)
+    print("[GameStateManager] Player resynced to spawn")
+end
+
+-- Only fires once per match: the last surviving human wins when all other
+-- humans and every AI bot are dead.
+function checkVictory()
+    if matchOver then return end
+
+    local aliveHuman = nil
+    local humanCount = 0
+    for plr, state in playerStates do
+        if typeof(plr) == "Instance" and state.alive then
+            humanCount += 1
+            aliveHuman = plr
+        end
+    end
+
+    local aliveBots = 0
+    for _, bot in aiBots do
+        if bot.state and bot.state.alive then
+            aliveBots += 1
+        end
+    end
+
+    if humanCount == 1 and aliveBots == 0 then
+        matchOver = true
+        print("[GameStateManager] Victory for " .. aliveHuman.Name)
+        VictoryEvent:FireClient(aliveHuman)
+    end
+end
 function GameStateManager.resetGame()
+    matchOver = false
+
     -- Clean up and remove AI bots
     for _, bot in ipairs(aiBots) do
         bot:cleanup()
@@ -189,7 +237,10 @@ function serverTick(dt)
         MatchManager.killBike(player)
     end
 
-    -- 4. Broadcast state
+    -- 4. Victory check (after all deaths processed)
+    checkVictory()
+
+    -- 5. Broadcast state
     broadcastState()
 end
 

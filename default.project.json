@@ -9,6 +9,8 @@
       "DeathEvent": { "$className": "RemoteEvent" },
       "ReplicateTurn": { "$className": "RemoteEvent" },
       "RestartEvent": { "$className": "RemoteEvent" },
+      "SpawnSync": { "$className": "RemoteEvent" },
+      "VictoryEvent": { "$className": "RemoteEvent" },
       "Shared": { "$path": "src/shared" }
     },
 

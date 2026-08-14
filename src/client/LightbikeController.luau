@@ -17,6 +17,7 @@ local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TurnEvent = ReplicatedStorage:WaitForChild("TurnEvent")
 local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
+local SpawnSync = ReplicatedStorage:WaitForChild("SpawnSync")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameState = require(ReplicatedStorage.Shared.GameState)
@@ -140,6 +141,12 @@ function spawnBike(char: Model)
 
         updateCamera(dt)
     end)
+
+    -- Sync the server authority to our spawn position. Fired right at spawn
+    -- (before we move) so the server player state starts at the same point as our
+    -- predicted position - otherwise the server gets a head start and shows up as
+    -- a "phantom" bike/trail ahead that dies at the wall before our own bike.
+    SpawnSync:FireServer()
 end
 
 function queueTurn(sign: number)
@@ -210,6 +217,11 @@ function updateCamera(dt: number)
     local smoothFactor = 1 - math.exp(-cameraLerpSpeed * dt)
     camera.CFrame = targetCF
     camera.FieldOfView = 90 + (Constants.BIKE_SPEED / 10)
+end
+
+-- Stop the bike (no more movement) but keep it visible, e.g. when we win.
+function LightbikeController.freeze()
+    alive = false
 end
 
 function LightbikeController.destroy()

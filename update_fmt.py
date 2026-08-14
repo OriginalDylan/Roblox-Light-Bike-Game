@@ -10,6 +10,8 @@ d = {
             "DeathEvent": {"$className": "RemoteEvent"},
             "ReplicateTurn": {"$className": "RemoteEvent"},
             "RestartEvent": {"$className": "RemoteEvent"},
+            "SpawnSync": {"$className": "RemoteEvent"},
+            "VictoryEvent": {"$className": "RemoteEvent"},
             "Shared": {"$path": "src/shared"}
         },
         "ServerScriptService": {
@@ -115,7 +117,7 @@ d = {
         }
     }
 }
-required = ["TurnEvent", "StateUpdate", "DeathEvent", "ReplicateTurn", "RestartEvent"]
+required = ["TurnEvent", "StateUpdate", "DeathEvent", "ReplicateTurn", "RestartEvent", "SpawnSync", "VictoryEvent"]
 missing = [k for k in required if k not in d["tree"]["ReplicatedStorage"]]
 if missing:
     raise SystemExit("ERROR: Missing remotes in project: " + ", ".join(missing))
