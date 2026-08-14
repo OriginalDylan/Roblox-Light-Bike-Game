@@ -4,6 +4,7 @@ local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StateUpdate = ReplicatedStorage:WaitForChild("StateUpdate")
 local ReplicateTurn = ReplicatedStorage:WaitForChild("ReplicateTurn")
+local RestartEvent = ReplicatedStorage:WaitForChild("RestartEvent")
 
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameStateHelpers = require(ReplicatedStorage.Shared.GameState)
@@ -17,6 +18,7 @@ local playerStates = {}
 local tickAccumulator = 0
 local tickNumber = 0
 local aiBots = {}
+local aiBotModule = nil
 
 function GameStateManager.getPlayerStates()
     return playerStates
@@ -34,8 +36,12 @@ function GameStateManager.init()
     end
 
     -- Spawn AI bots (lazy require to avoid circular dep)
-    local AIBot = require(script.Parent.AIBot)
-    spawnAIBots(AIBot)
+    aiBotModule = require(script.Parent.AIBot)
+    spawnAIBots(aiBotModule)
+
+    RestartEvent.OnServerEvent:Connect(function()
+        GameStateManager.resetGame()
+    end)
 
     RunService.Heartbeat:Connect(function(dt)
         tickAccumulator = tickAccumulator + dt
@@ -115,6 +121,36 @@ function spawnAIBots(AIBot)
     end
 
     print("[GameStateManager] Spawned " .. #aiBots .. " AI bots")
+end
+
+function GameStateManager.resetGame()
+    -- Clean up and remove AI bots
+    for _, bot in ipairs(aiBots) do
+        bot:cleanup()
+    end
+    aiBots = {}
+
+    -- Reset all real human players
+    local humanPlayers = {}
+    for plr in playerStates do
+        if typeof(plr) == "Instance" then
+            table.insert(humanPlayers, plr)
+        end
+    end
+    for _, plr in ipairs(humanPlayers) do
+        removePlayerState(plr)
+        createPlayerState(plr)
+        if plr.Parent then
+            plr:LoadCharacter()
+        end
+    end
+
+    -- Respawn AI bots fresh
+    if aiBotModule then
+        spawnAIBots(aiBotModule)
+    end
+
+    print("[GameStateManager] Game reset by Play Again")
 end
 
 function serverTick(dt)

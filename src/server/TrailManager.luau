@@ -1,3 +1,11 @@
+--[[
+    TrailManager.luau (SERVER)
+    ==========================
+    Server-authoritative trail parts + collision data.
+    This is one of TWO parallel trail systems; the other is the client-side
+    LocalTrailRenderer (client/LocalTrailRenderer.luau), which draws the LOCAL
+    player's trail. Keep the two in sync on create/destroy.
+]]
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")

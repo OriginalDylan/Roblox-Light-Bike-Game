@@ -25,6 +25,5 @@ GameStateManager.init()
 LightbikeServer.init()
 CollisionService.init()
 MatchManager.init()
-AIBot.init()
 
 print("[Server] All server modules initialized successfully.")

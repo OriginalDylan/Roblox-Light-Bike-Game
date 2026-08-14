@@ -8,6 +8,7 @@
       "StateUpdate": { "$className": "UnreliableRemoteEvent" },
       "DeathEvent": { "$className": "RemoteEvent" },
       "ReplicateTurn": { "$className": "RemoteEvent" },
+      "RestartEvent": { "$className": "RemoteEvent" },
       "Shared": { "$path": "src/shared" }
     },
 

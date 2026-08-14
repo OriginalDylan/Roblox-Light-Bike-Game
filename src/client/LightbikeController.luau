@@ -21,6 +21,7 @@ local DeathEvent = ReplicatedStorage:WaitForChild("DeathEvent")
 local Constants = require(ReplicatedStorage.Shared.Constants)
 local GameState = require(ReplicatedStorage.Shared.GameState)
 local LocalTrailRenderer = require(script.Parent.LocalTrailRenderer)
+local DeathUI = require(script.Parent.DeathUI)
 
 
 local LightbikeController = {}
@@ -50,6 +51,7 @@ function LightbikeController.init()
 
     DeathEvent.OnClientEvent:Connect(function()
         LightbikeController.destroy()
+        DeathUI.show()
     end)
 
     playerColor = Constants.COLORS[3]
@@ -72,6 +74,8 @@ function spawnBike(char: Model)
         renderConnection:Disconnect()
         renderConnection = nil
     end
+    DeathUI.hide()
+
     alive = true
     direction = Constants.DIRECTIONS.NORTH
     position = Vector3.new(0, Constants.SPAWN_Y, 0)
