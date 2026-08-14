@@ -16,6 +16,7 @@ local GameStateManager = {}
 local playerStates = {}
 local tickAccumulator = 0
 local tickNumber = 0
+local aiBots = {}
 
 function GameStateManager.getPlayerStates()
     return playerStates
@@ -31,6 +32,10 @@ function GameStateManager.init()
     for _, player in Players:GetPlayers() do
         createPlayerState(player)
     end
+
+    -- Spawn AI bots (lazy require to avoid circular dep)
+    local AIBot = require(script.Parent.AIBot)
+    spawnAIBots(AIBot)
 
     RunService.Heartbeat:Connect(function(dt)
         tickAccumulator = tickAccumulator + dt
@@ -86,8 +91,36 @@ function removePlayerState(player)
     end
 end
 
+function spawnAIBots(AIBot)
+    local playerCount = #Players:GetPlayers()
+    local botCount = math.max(Constants.AI_BOT_COUNT - playerCount, 0)
+    if botCount <= 0 then
+        botCount = 1
+    end
+
+    local spawnConfigs = {
+        { pos = Vector3.new(-200, Constants.SPAWN_Y, -200), dir = Constants.DIRECTIONS.EAST,  color = 2 },
+        { pos = Vector3.new(200, Constants.SPAWN_Y, 200),   dir = Constants.DIRECTIONS.WEST,  color = 5 },
+        { pos = Vector3.new(-200, Constants.SPAWN_Y, 200),  dir = Constants.DIRECTIONS.SOUTH, color = 4 },
+    }
+
+    local difficulties = { "EASY", "MEDIUM", "HARD" }
+
+    for i = 1, math.min(botCount, #spawnConfigs) do
+        local cfg = spawnConfigs[i]
+        local diff = difficulties[i] or "EASY"
+        local bot = AIBot.new(diff, cfg.pos, cfg.dir, cfg.color)
+        local fakePlayer = bot:spawn()
+        table.insert(aiBots, bot)
+    end
+
+    print("[GameStateManager] Spawned " .. #aiBots .. " AI bots")
+end
+
 function serverTick(dt)
     tickNumber = tickNumber + 1
+
+    -- 1. Move human players
     for _, state in playerStates do
         if state.alive and not state.isAI then
             state.position = state.position + state.direction * Constants.BIKE_SPEED * dt
@@ -98,6 +131,14 @@ function serverTick(dt)
         end
     end
 
+    -- 2. Tick AI bots (they move + think + possibly turn)
+    for _, bot in aiBots do
+        if bot.state and bot.state.alive then
+            bot:tick(dt)
+        end
+    end
+
+    -- 3. Collision check (after ALL movement this tick)
     local dead = CollisionService.checkAll(playerStates)
     for player, _ in dead do
         local state = playerStates[player]
@@ -111,6 +152,8 @@ function serverTick(dt)
         TrailManager.onDeath(player, state.position, state.lastTurnPosition)
         MatchManager.killBike(player)
     end
+
+    -- 4. Broadcast state
     broadcastState()
 end
 

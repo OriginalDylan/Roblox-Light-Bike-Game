@@ -3,7 +3,7 @@ return {
     BIKE_SIZE        = Vector3.new(2, 1, 4),
     TURN_ANGLE       = 90,
     GRID_SIZE        = 2,
-    ARENA_SIZE       = 2048,
+    ARENA_SIZE = 1024,
     TICK_RATE        = 30,
     TICK_INTERVAL    = 1 / 30,
     TRAIL_HEIGHT     = 3,
@@ -13,7 +13,7 @@ return {
     BIKE_MATERIAL    = Enum.Material.SmoothPlastic,
     MAX_TURN_RATE    = 8,
     INTERP_DELAY     = 0.1,
-    AI_SPEED         = 60,
+    AI_SPEED         = 20,
     AI_BOT_COUNT     = 3,
     AI_DIFFICULTY = {
         EASY = {

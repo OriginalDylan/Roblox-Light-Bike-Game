@@ -1,4 +1,3 @@
-local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -19,11 +18,6 @@ end
 
 local function rotateRight(dir)
     return Vector3.new(-dir.Z, 0, dir.X)
-end
-
-local function segmentsEqual(a, b)
-    return a.startX == b.startX and a.startZ == b.startZ
-       and a.endX == b.endX and a.endZ == b.endZ
 end
 
 local function getAllTrailSegments(playerStates, excludePlayer)
@@ -47,17 +41,15 @@ function AIBot.new(difficulty, spawnPos, initialDir, colorIndex)
     self.difficulty = difficulty
     self.reactionCounter = 0
     self.ticksSinceFloodFill = 0
-    self.tickAcc = 0
     self.spawnPos = spawnPos
     self.initialDir = initialDir
     self.colorIndex = colorIndex
-    self.connection = nil
     self.state = nil
     self.cleanedUp = false
     return self
 end
 
-function AIBot:start()
+function AIBot:spawn()
     local fakePlayer = {
         UserId = 10000 + self.botId,
         Name = "AI_Bot_" .. self.botId,
@@ -94,11 +86,8 @@ function AIBot:start()
     playerStates[fakePlayer] = self.state
     TrailManager.addPlayer(fakePlayer, color)
 
-    self.connection = RunService.Heartbeat:Connect(function(dt)
-        self:tick(dt)
-    end)
-
     print("[AIBot] Bot " .. self.botId .. " (" .. self.difficulty .. ") spawned at", spawnPos)
+    return fakePlayer
 end
 
 function AIBot:tick(dt)
@@ -109,18 +98,15 @@ function AIBot:tick(dt)
         return
     end
 
-    self.tickAcc = self.tickAcc + dt
-    while self.tickAcc >= Constants.TICK_INTERVAL do
-        self.tickAcc = self.tickAcc - Constants.TICK_INTERVAL
-
-        self.state.position = self.state.position + self.state.direction * Constants.BIKE_SPEED * Constants.TICK_INTERVAL
-        if self.state.bikePart then
-            self.state.bikePart.CFrame = CFrame.lookAt(self.state.position, self.state.position + self.state.direction)
-        end
-        TrailManager.updateActiveSegment(self.state.player, self.state.position, self.state.lastTurnPosition)
-
-        self:think()
+    -- Move
+    self.state.position = self.state.position + self.state.direction * Constants.BIKE_SPEED * dt
+    if self.state.bikePart then
+        self.state.bikePart.CFrame = CFrame.lookAt(self.state.position, self.state.position + self.state.direction)
     end
+    TrailManager.updateActiveSegment(self.state.player, self.state.position, self.state.lastTurnPosition)
+
+    -- Think (may turn)
+    self:think()
 end
 
 function AIBot:think()
@@ -385,44 +371,18 @@ end
 function AIBot:cleanup()
     if self.cleanedUp then return end
     self.cleanedUp = true
-    if self.connection then
-        self.connection:Disconnect()
-        self.connection = nil
-    end
     if self.state then
         local playerStates = GameStateManager.getPlayerStates()
         if playerStates[self.state.player] then
             playerStates[self.state.player] = nil
         end
         TrailManager.removePlayer(self.state.player)
+        if self.state.bikePart then
+            self.state.bikePart:Destroy()
+        end
         self.state = nil
     end
     print("[AIBot] Bot " .. self.botId .. " cleaned up")
-end
-
-function AIBot.init()
-    local playerCount = #Players:GetPlayers()
-    local botCount = math.max(Constants.AI_BOT_COUNT - playerCount, 0)
-    if botCount <= 0 then
-        botCount = 1
-    end
-
-    local spawnConfigs = {
-        { pos = Vector3.new(-200, Constants.SPAWN_Y, -200), dir = Constants.DIRECTIONS.EAST,  color = 2 },
-        { pos = Vector3.new(200, Constants.SPAWN_Y, 200),   dir = Constants.DIRECTIONS.WEST,  color = 5 },
-        { pos = Vector3.new(-200, Constants.SPAWN_Y, 200),  dir = Constants.DIRECTIONS.SOUTH, color = 4 },
-    }
-
-    local difficulties = { "EASY", "MEDIUM", "HARD" }
-
-    for i = 1, math.min(botCount, #spawnConfigs) do
-        local cfg = spawnConfigs[i]
-        local diff = difficulties[i] or "EASY"
-        local bot = AIBot.new(diff, cfg.pos, cfg.dir, cfg.color)
-        bot:start()
-    end
-
-    print("[AIBot] Initialized " .. math.min(botCount, #spawnConfigs) .. " bots")
 end
 
 return AIBot
